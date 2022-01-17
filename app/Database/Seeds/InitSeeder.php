@@ -8,14 +8,14 @@ class InitSeeder extends Seeder
 {
     public function run()
     {
-        $this->call('GasStation');
-        $this->call('News');
-        $this->call('Restaurants');
-        $this->call('Reviews');
-        $this->call('Roles');
-        $this->call('Users');
-        $this->call('Videos');
-        $this->call('Weather');
+        $this->call('GasStationSeeder');
+        $this->call('NewsSeeder');
+        $this->call('RestaurantSeeder');
+        $this->call('ReviewSeeder');
+        $this->call('RolesSeeder');
+        $this->call('UsersSeeder');
+        $this->call('VideosSeeder');
+        $this->call('WeatherSeeder');
 
     }
 }

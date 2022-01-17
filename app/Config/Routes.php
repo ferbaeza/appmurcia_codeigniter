@@ -25,6 +25,15 @@ $routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
+ * NameSpaces
+ * --------------------------------------------------------------------
+ */
+if(!defined('ADMIN_NAMESPACE')) define('ADMIN_NAMESPACE', 'App\Controllers\Admin');
+if(!defined('REST_NAMESPACE')) define('REST_NAMESPACE', 'App\Controllers\Rest');
+if(!defined('COMMAND_NAMESPACE')) define('COMMAND_NAMESPACE', 'App\Controllers\Command');
+
+/*
+ * --------------------------------------------------------------------
  * Route Definitions
  * --------------------------------------------------------------------
  */
@@ -32,6 +41,35 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+
+
+
+
+//--------------------------------------------------------------------
+// Rest Routes
+//-------------------------------------------------------------------
+$routes->group('rest',function($routes){
+    //-----------------Restaurants---------------------//
+    $routes->get('restaurants', 'RestaurantRestController::index',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('restaurants/(:any)', 'RestaurantRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
+    //$routes->delete('restaurants', 'RestaurantRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
+    //$routes->post('restaurants', 'RestaurantRestController::modify',['namespace' => REST_NAMESPACE] ); 
+    //-----------------GasStations---------------------//
+    $routes->get('stations', 'GasStationRestController::index',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('stations/(:any)', 'GasStationRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
+    //$routes->delete('stations', 'GasStationRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
+    //$routes->post('stations', 'GasStationRestController::modify',['namespace' => REST_NAMESPACE] ); 
+    
+});
+//--------------------------------------------------------------------
+// Command Routes
+//-------------------------------------------------------------------
+// $routes->group('commands',function($routes){
+//     $routes->cli('comandouno', 'Scripts::comandoUno',['namespace' => COMMAND_NAMESPACE] ); 
+//     $routes->cli('comandodos', 'Scripts::comandoDos',['namespace' => COMMAND_NAMESPACE] ); 
+//     $routes->cli('comandotres', 'Scripts::comandoTres',['namespace' => COMMAND_NAMESPACE] ); 
+// });
+//--------------------------------------------------------------------
 
 /*
  * --------------------------------------------------------------------
