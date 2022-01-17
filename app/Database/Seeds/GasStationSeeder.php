@@ -18,8 +18,8 @@ class GasStationSeeder extends Seeder
             [
             'label'=> 'Repsol',
             'address'=> 'Av Juan Carlos I',
-            'latitud'=> 3.896848,
-            'longitud'=> 12.168461,
+            'latitud'=> 37.896848,
+            'longitud'=> 1.168461,
             'ideess'=> 'Ed5644R',
             'created_at'=> $created->format('Y-m-d H:i:s'),
             'updated_at'=> $updated->format('Y-m-d H:i:s'),

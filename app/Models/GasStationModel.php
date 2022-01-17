@@ -7,7 +7,7 @@ use App\Entities\GasStationEntity;
 
 class GasStationModel extends Model
 {
-    protected $table            = 'gasstations';
+    protected $table            = 'gasstation';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = GasStationEntity::class;
