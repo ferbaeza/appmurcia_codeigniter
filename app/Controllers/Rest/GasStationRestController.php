@@ -19,7 +19,7 @@ class GasStationRestController extends RESTfulResourceController
             if($gas != null){
                 return $this->respond($gas, 200, "Restaurante encontrado");
             }else{
-                return $$this->respond($data, 400, "Tu consulta no existe");
+                return $$this->respond($data, 404, "Tu consulta no existe");
             }
 
         }catch(\Exception $e){
