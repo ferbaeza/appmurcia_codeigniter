@@ -2,12 +2,30 @@
 
 namespace App\Controllers\Rest;
 
-use App\Controllers\BaseController;
+use CodeIgniter\RESTful\ResourceController as RESTfulResourceController;
+use App\Models\ReviewsModel;
 
-class ReviewRestController extends BaseController
+class ReviewRestController extends RESTfulResourceController
 {
-    public function index()
+   
+    protected $category= "app\Models\ReviewsModel"; 
+    protected $format= "json";
+
+    public function index($id="")
     {
-        //
+        try{
+            $data= "Ups, algo ha fallado";
+            $review = new ReviewsModel();
+            $review = $review->findId($id);
+            if($review != null){
+                return $this->respond($review, 200, "Restaurante encontrado");
+            }else{
+                return $$this->respond($data, 400, "Tu consulta no existe");
+            }
+
+        }catch(\Exception $e){
+            return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
+        }
     }
+    
 }
