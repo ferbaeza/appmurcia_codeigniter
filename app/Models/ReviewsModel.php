@@ -32,13 +32,10 @@ class ReviewsModel extends Model
             ->first();
         }
     }
-    public function findMail($email= null)
+    public function findRevbymailandRest($email= null, $restaurant_id=null)
     {
-        if(is_null($email)){
-            return $this->findAll();
-        }else{
-            return $this->where(['email'=>$email])->first();
-        }
+        $cond = "email =  $email AND restaurant_id = $restaurant_id";
+        return  $this->where($cond)->findAll();
     }
     public function findRestaId($restaurant_id= null)
     {

@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Rest;
 
+use App\Models\RestaurantsModel;
 use CodeIgniter\RESTful\ResourceController as RESTfulResourceController;
 use App\Models\ReviewsModel;
 
@@ -72,21 +73,26 @@ class ReviewRestController extends RESTfulResourceController
     }
 
 
-    public function bymail($mail, $restaurant_id)
+    public function bymailandId($email="", $restaurant_id="")
     {
         try{
             $data= "Ups, algo ha fallado, tu consulta no existe";
-            $review = new ReviewsModel();
-            $review = $review->findMail($mail);
-            if($review != null){
-                $review = $review->findRestaId($restaurant_id);
-                if($review != null){
-                    return $this->respond($review, 200, "Review encontrada");
-                }else{
-                    return $this->respond($data, 404, "Tu consulta no existe");
-                }
-            }else{
+            $reviewmail = new ReviewsModel();
+            $restaurante = new RestaurantsModel();
+            $restaurante = $restaurante->findId($restaurant_id);
+            if($email==="" ||$email=null ||$restaurant_id==="" ||$restaurant_id=null){
                 return $this->respond($data, 400, "Algo hay mal en los campos introducidos");
+            }else{
+                if($restaurante!= null){    
+                    $reviewmail = $reviewmail->findRevbymailandRest($email, $restaurant_id);
+                    if($reviewmail != null){
+                        return $this->respond($reviewmail, 200, "Review encontrada");
+                    }else{
+                        return $this->respond($data, 400, "Algo hay mal en los campos introducidos");
+                    }
+                }else{
+                    return $this->respond($data, 404, "El restaurante que has pasado no existe");
+                }
             }
         }catch(\Exception $e){
             return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
