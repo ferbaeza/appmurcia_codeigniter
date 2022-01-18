@@ -54,16 +54,19 @@ $routes->group('rest',function($routes){
     $routes->get('restaurants/(:any)', 'RestaurantRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
     //$routes->delete('restaurants', 'RestaurantRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('restaurants', 'RestaurantRestController::modify',['namespace' => REST_NAMESPACE] ); 
+    //-------------------------------------------------------------------
     //-----------------GasStations---------------------//
     $routes->get('stations', 'GasStationRestController::index',['namespace' => REST_NAMESPACE] ); 
     $routes->get('stations/(:any)', 'GasStationRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
     //$routes->delete('stations', 'GasStationRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('stations', 'GasStationRestController::modify',['namespace' => REST_NAMESPACE] ); 
+    //-------------------------------------------------------------------
     //-----------------Wheather---------------------//
     $routes->get('weather', 'WeatherRestController::index',['namespace' => REST_NAMESPACE] ); 
     $routes->get('weather/(:any)', 'WeatherRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
     //$routes->delete('weather', 'WeatherRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('weather', 'WheatherRestController::modify',['namespace' => REST_NAMESPACE] );
+    //-------------------------------------------------------------------
     //-----------------Review---------------------//
     $routes->get('reviewall', 'ReviewRestController::index',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewall/(:any)', 'ReviewRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
@@ -75,8 +78,9 @@ $routes->group('rest',function($routes){
     $routes->get('reviewbymailbyrestid/(:any)', 'ReviewRestController::bymailandId/$1',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewbymailbyrestid', 'ReviewRestController::bymailandId',['namespace' => REST_NAMESPACE] ); 
     // eldiariogourmet@mail.com  2
-    //$routes->delete('review', 'ReviewRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
+    $routes->delete('deletereview', 'ReviewRestController::deleteReview',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('review', 'ReviewRestController::modify',['namespace' => REST_NAMESPACE] );
+    //-------------------------------------------------------------------
     //-----------------News---------------------//
     $routes->get('news', 'NewsRestController::index',['namespace' => REST_NAMESPACE] ); 
     $routes->get('news/(:any)', 'NewsRestController::index/$1',['namespace' => REST_NAMESPACE] ); 

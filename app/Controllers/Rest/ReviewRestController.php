@@ -101,6 +101,25 @@ class ReviewRestController extends RESTfulResourceController
             return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
         }
     }
+    public function deleteReview()
+    {
+        try{
+            $body = $this->request->getJSON();
+            $rev = new ReviewsModel();
+            $review= $rev->findId($body->id);
+            if($review){
+                $rev->delete(['id'=>$body->id]);
+                return $this->respond($review, 200, "Review ".$body->id." eliminada correctamente");
+            }else{
+                return $this->respond("La review solicitada no ha sido encontrada",200,"La review solicitada no ha sido encontrada");
+            }
+
+        }catch(\Exception $e){
+            return $this->respond("KO, Error grave en el servidor", 500, "KO, Error grave en el servidor");
+        }
+
+
+    }
 
     
 }
