@@ -11,12 +11,12 @@ class ReviewRestController extends RESTfulResourceController
     protected $category= "app\Models\ReviewsModel"; 
     protected $format= "json";
 
-    public function index($id="")
+    public function index($email="",$restaurante_id="")
     {
         try{
             $data= "Ups, algo ha fallado";
             $review = new ReviewsModel();
-            $review = $review->findId($id);
+            $review = $review->findReview($email,$restaurante_id);
             if($review != null){
                 return $this->respond($review, 200, "Restaurante encontrado");
             }else{

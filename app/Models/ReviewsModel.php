@@ -21,17 +21,7 @@ class ReviewsModel extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    public function findId($id =null)
-    {
-        if(is_null($id)){
-            return $this->findAll();
-        }else  if($id==""){
-           return $this->findAll();
-        }else{
-        return $this->where(['id'=>$id])
-            ->first();
-        }
-    }
+    
 
     
 

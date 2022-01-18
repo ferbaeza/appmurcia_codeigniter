@@ -10,14 +10,14 @@ class WeatherRestController extends RESTfulResourceController
     protected $category= "app\Models\WeatherModel"; 
     protected $format= "json";
 
-    public function index($id="")
+    public function index()
     {
         try{
             $data= "Ups, algo ha fallado";
-            $review = new WeatherModel();
-            $review = $review->findId($id);
-            if($review != null){
-                return $this->respond($review, 200, "Restaurante encontrado");
+            $wheather = new WeatherModel();
+            $wheather = $wheather->findWeather();
+            if($wheather != null){
+                return $this->respond($wheather, 200, "Restaurante encontrado");
             }else{
                 return $$this->respond($data, 400, "Tu consulta no existe");
             }

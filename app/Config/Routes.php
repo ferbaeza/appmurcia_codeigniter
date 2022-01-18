@@ -61,12 +61,12 @@ $routes->group('rest',function($routes){
     //$routes->post('stations', 'GasStationRestController::modify',['namespace' => REST_NAMESPACE] ); 
     //-----------------Wheather---------------------//
     $routes->get('weather', 'WheatherRestController::index',['namespace' => REST_NAMESPACE] ); 
-    $routes->get('weather/(:any)', 'WheatherRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
+    //$routes->get('weather/(:any)', 'WheatherRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
     //$routes->delete('weather', 'WheatherRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('weather', 'WheatherRestController::modify',['namespace' => REST_NAMESPACE] );
     //-----------------Review---------------------//
-    $routes->get('review', 'ReviewRestController::index',['namespace' => REST_NAMESPACE] ); 
-    $routes->get('review/(:any)', 'ReviewRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
+    //$routes->get('review', 'ReviewRestController::index',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('review/(:any)/(:any)', 'ReviewRestController::index/$1/$2',['namespace' => REST_NAMESPACE] ); 
     //$routes->delete('review', 'ReviewRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('review', 'ReviewRestController::modify',['namespace' => REST_NAMESPACE] );
     //-----------------News---------------------//
