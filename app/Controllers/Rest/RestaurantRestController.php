@@ -14,13 +14,13 @@ class RestaurantRestController extends RESTfulResourceController
     public function index($id="")
     {
         try{
-            $data= "Ups, algo ha fallado";
+            $data= "Ups, algo ha fallado, tu consulta no existe";
             $resto = new RestaurantsModel();
             $resto = $resto->findId($id);
             if($resto != null){
                 return $this->respond($resto, 200, "Restaurante encontrado");
             }else{
-                return $$this->respond($data, 404, "Tu consulta no existe");
+                return $this->respond($data, 404, "Tu consulta no existe");
             }
 
         }catch(\Exception $e){

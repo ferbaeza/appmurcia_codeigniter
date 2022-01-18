@@ -32,6 +32,33 @@ class ReviewsModel extends Model
             ->first();
         }
     }
+    public function findMail($email= null)
+    {
+        if(is_null($email)){
+            return $this->findAll();
+        }else{
+            return $this->where(['email'=>$email])->first();
+        }
+    }
+    public function findRestaId($restaurant_id= null)
+    {
+        if(is_null($restaurant_id)){
+            return $this->findAll();
+        }else{
+            return $this->where(['restaurant_id'=>$restaurant_id])->first();
+        }
+    }
+    public function redId($id =null)
+    {
+        if(is_null($id)){
+            return $this->findAll();
+        }else{
+        return $this->where(['id'=>$id])
+            ->first();
+        }
+    }
+
+
 
     
 
