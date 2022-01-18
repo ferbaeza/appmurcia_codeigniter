@@ -73,20 +73,20 @@ class ReviewRestController extends RESTfulResourceController
     }
 
 
-    public function bymailandId($email="", $restaurant_id="")
+    public function bymailandId($email=null, $restaurant_id=null)
     {
         try{
             $data= "Ups, algo ha fallado, tu consulta no existe";
             $reviewmail = new ReviewsModel();
             $restaurante = new RestaurantsModel();
-            $restaurante = $restaurante->findId($restaurant_id);
-            if($email==="" ||$email=null ||$restaurant_id==="" ||$restaurant_id=null){
-                return $this->respond($data, 400, "Algo hay mal en los campos introducidos");
+            if( $email=null || $restaurant_id=null){
+                return $this->respond($data, 401, "Algo hay mal en los campos introducidos");
             }else{
-                if($restaurante!= null){    
-                    $reviewmail = $reviewmail->findRevbymailandRest($email, $restaurant_id);
-                    if($reviewmail != null){
-                        return $this->respond($reviewmail, 200, "Review encontrada");
+                $restaurant = $restaurante->findId($restaurant_id);
+                if($restaurant){    
+                    $reviewmail1 = $reviewmail->findRevbymailandRest($email, $restaurant_id);
+                    if($reviewmail1){
+                        return $this->respond($reviewmail1, 200, "Review encontrada");
                     }else{
                         return $this->respond($data, 400, "Algo hay mal en los campos introducidos");
                     }
@@ -94,6 +94,15 @@ class ReviewRestController extends RESTfulResourceController
                     return $this->respond($data, 404, "El restaurante que has pasado no existe");
                 }
             }
+        }catch(\Exception $e){
+            return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
+        }
+    }
+
+    public function editCreate($review_id="",$restaurant_id="",$email="",$descripcion="",$punctuation="")
+    {
+        try{
+            
         }catch(\Exception $e){
             return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
         }

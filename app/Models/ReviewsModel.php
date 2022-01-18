@@ -32,11 +32,13 @@ class ReviewsModel extends Model
             ->first();
         }
     }
-    public function findRevbymailandRest($email= null, $restaurant_id=null)
+
+    public function findRevbymailandRest($email=null, $restaurant_id=null)
     {
-        $cond = "email =  $email AND restaurant_id = $restaurant_id";
-        return  $this->where($cond)->findAll();
+        $cond = "email='$email' AND restaurant_id=$restaurant_id";
+        return $this->where($cond)->findAll();
     }
+
     public function findRestaId($restaurant_id= null)
     {
         if(is_null($restaurant_id)){
@@ -54,6 +56,23 @@ class ReviewsModel extends Model
             ->first();
         }
     }
+    public function createactualizarRev($review_id=null,$restaurant_id=null,$email=null,$descripcion=null,$punctuation=null)
+    {
+        $data=[
+            "review_id" => $review_id,
+            "restaurant_id" => $restaurant_id,
+            "email" => $email,
+            "descripcion" => $descripcion,
+            "punctuation" => $punctuation
+        ];
+       if(is_null($review_id)){
+           $newReview= new ReviewsEntity();
+       }else{
+            $newReview= new ReviewsEntity();
+       }
+    }
+   
+    
 
 
 

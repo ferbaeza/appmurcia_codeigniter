@@ -72,8 +72,8 @@ $routes->group('rest',function($routes){
     $routes->get('reviewid/(:any)', 'ReviewRestController::reviewId/$1',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewid/', 'ReviewRestController::reviewId',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewbymailbyrestid/(:any)/(:any)', 'ReviewRestController::bymailandId/$1/$2',['namespace' => REST_NAMESPACE] ); 
-    $routes->get('reviewbymailbyrestid/(:any)', 'ReviewRestController::bymailandId/$1',['namespace' => REST_NAMESPACE] ); 
-    $routes->get('reviewbymailbyrestid', 'ReviewRestController::bymailandId',['namespace' => REST_NAMESPACE] ); 
+    //$routes->get('reviewbymailbyrestid/(:any)', 'ReviewRestController::bymailandId/$1',['namespace' => REST_NAMESPACE] ); 
+    //$routes->get('reviewbymailbyrestid', 'ReviewRestController::bymailandId',['namespace' => REST_NAMESPACE] ); 
     // eldiariogourmet@mail.com  2
     //$routes->delete('review', 'ReviewRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('review', 'ReviewRestController::modify',['namespace' => REST_NAMESPACE] );
