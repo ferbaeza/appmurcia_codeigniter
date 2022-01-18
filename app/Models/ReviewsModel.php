@@ -35,8 +35,8 @@ class ReviewsModel extends Model
 
     public function findRevbymailandRest($email=null, $restaurant_id=null)
     {
-        $cond = "email='$email' AND restaurant_id=$restaurant_id";
-        return $this->where($cond)->findAll();
+        $cond = "email ='$email' AND restaurant_id =$restaurant_id";
+        return  $this->where($cond)->findAll();
     }
 
     public function findRestaId($restaurant_id= null)

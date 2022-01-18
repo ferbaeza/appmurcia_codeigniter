@@ -35,7 +35,7 @@ class ReviewRestController extends RESTfulResourceController
             $data= "Ups, algo ha fallado, tu consulta no existe";
             $resta = new ReviewsModel();
             $resta = $resta->findRestaId($id);
-            if($id ==="" || $id=null){
+            if($id ==="" || $id==null){
                 return $this->respond($data, 400, "No se ha pasado el id del Restaurante");
             }else{
                 if($resta!=null){
@@ -56,7 +56,7 @@ class ReviewRestController extends RESTfulResourceController
             $data= "Ups, algo ha fallado, tu consulta no existe";
             $review = new ReviewsModel();
             $review = $review->redId($id);
-            if($id=== "" || $id=null){
+            if($id=== "" || $id==null){
                 return $this->respond($data, 400, "No se ha pasado el id de la review");
             }else{
                 if($review != null){
@@ -76,22 +76,25 @@ class ReviewRestController extends RESTfulResourceController
     public function bymailandId($email=null, $restaurant_id=null)
     {
         try{
+            //dd($email);
+            //dd($restaurant_id);
             $data= "Ups, algo ha fallado, tu consulta no existe";
-            $reviewmail = new ReviewsModel();
+            $reviewmailq = new ReviewsModel();
             $restaurante = new RestaurantsModel();
-            if( $email=null || $restaurant_id=null){
-                return $this->respond($data, 401, "Algo hay mal en los campos introducidos");
+            if($email==null || $restaurant_id==null){
+                return $this->respond("Tienes que introducir todos los campos", 400, "Tienes que introducir todos los campos");
             }else{
-                $restaurant = $restaurante->findId($restaurant_id);
-                if($restaurant){    
-                    $reviewmail1 = $reviewmail->findRevbymailandRest($email, $restaurant_id);
-                    if($reviewmail1){
-                        return $this->respond($reviewmail1, 200, "Review encontrada");
+                //dd($email);
+                $resta = $restaurante->findId($restaurant_id);
+                if($resta){    
+                    $reviewmail = $reviewmailq->findRevbymailandRest($email, $restaurant_id);
+                    if($reviewmail){
+                        return $this->respond($reviewmail, 200, "Review encontrada");
                     }else{
-                        return $this->respond($data, 400, "Algo hay mal en los campos introducidos");
+                        return $this->respond("Algo hay mal en los campos introducidos", 400, "Algo hay mal en los campos introducidos");
                     }
                 }else{
-                    return $this->respond($data, 404, "El restaurante que has pasado no existe");
+                    return $this->respond("El restaurante que has pasado no existe", 404, "El restaurante que has pasado no existe");
                 }
             }
         }catch(\Exception $e){
