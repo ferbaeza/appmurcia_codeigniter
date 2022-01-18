@@ -13,13 +13,13 @@ class WeatherRestController extends RESTfulResourceController
     public function index()
     {
         try{
-            $data= "Ups, algo ha fallado";
-            $wheather = new WeatherModel();
-            $wheather = $wheather->findWeather();
-            if($wheather != null){
-                return $this->respond($wheather, 200, "Restaurante encontrado");
+            $data= "Ups, algo ha fallado, tu consulta no existe";
+            $review = new WeatherModel();
+            $review = $review->findId($id);
+            if($review != null){
+                return $this->respond($review, 200, "Restaurante encontrado");
             }else{
-                return $$this->respond($data, 400, "Tu consulta no existe");
+                return $this->respond($data, 404, "Tu consulta no existe");
             }
 
         }catch(\Exception $e){

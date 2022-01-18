@@ -21,7 +21,41 @@ class ReviewsModel extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    
+    public function findId($id =null)
+    {
+        if(is_null($id)){
+            return $this->findAll();
+        }else  if($id==""){
+           return $this->findAll();
+        }else{
+        return $this->where(['id'=>$id])
+            ->first();
+        }
+    }
+    public function findRevbymailandRest($email= null, $restaurant_id=null)
+    {
+        $cond = "email =  $email AND restaurant_id = $restaurant_id";
+        return  $this->where($cond)->findAll();
+    }
+    public function findRestaId($restaurant_id= null)
+    {
+        if(is_null($restaurant_id)){
+            return $this->findAll();
+        }else{
+            return $this->where(['restaurant_id'=>$restaurant_id])->first();
+        }
+    }
+    public function redId($id =null)
+    {
+        if(is_null($id)){
+            return $this->findAll();
+        }else{
+        return $this->where(['id'=>$id])
+            ->first();
+        }
+    }
+
+
 
     
 

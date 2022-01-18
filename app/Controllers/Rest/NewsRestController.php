@@ -13,13 +13,13 @@ class NewsRestController extends RESTfulResourceController
     public function index($id="")
     {
         try{
-            $data= "Ups, algo ha fallado";
+            $data= "Ups, algo ha fallado, tu consulta no existe";
             $review = new NewsModel();
             $review = $review->findId($id);
             if($review != null){
                 return $this->respond($review, 200, "Restaurante encontrado");
             }else{
-                return $$this->respond($data, 400, "Tu consulta no existe");
+                return $this->respond($data, 404, "Tu consulta no existe");
             }
 
         }catch(\Exception $e){
