@@ -28,20 +28,20 @@ class ReviewRestController extends RESTfulResourceController
         }
     }
 
-    public function restaId($id)
+    public function restaId($id="")
     {
         try{
             $data= "Ups, algo ha fallado, tu consulta no existe";
-            $review = new ReviewsModel();
-            $review = $review->findRestaId($id);
-            if($id!=null){
-                if($review != null){
-                    return $this->respond($review, 200, "Review encontrada");
+            $resta = new ReviewsModel();
+            $resta = $resta->findRestaId($id);
+            if($id ==="" || $id=null){
+                return $this->respond($data, 400, "No se ha pasado el id del Restaurante");
+            }else{
+                if($resta!=null){
+                    return $this->respond($resta, 200, "Tu consulta no existe");
                 }else{
                     return $this->respond($data, 404, "Tu consulta no existe");
-                }  
-            }else{
-                return $this->respond($data, 400, "No se ha pasado el id del Restaurante");
+             }
             }
 
         }catch(\Exception $e){
@@ -56,7 +56,7 @@ class ReviewRestController extends RESTfulResourceController
             $review = new ReviewsModel();
             $review = $review->redId($id);
             if($id=== "" || $id=null){
-                return $this->respond($data, 400, "No se ha pasado el id del Restaurante");
+                return $this->respond($data, 400, "No se ha pasado el id de la review");
             }else{
                 if($review != null){
                     return $this->respond($review, 200, "Review encontrada");

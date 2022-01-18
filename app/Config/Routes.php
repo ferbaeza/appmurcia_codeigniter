@@ -67,8 +67,10 @@ $routes->group('rest',function($routes){
     //-----------------Review---------------------//
     $routes->get('review', 'ReviewRestController::index',['namespace' => REST_NAMESPACE] ); 
     $routes->get('review/(:any)', 'ReviewRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('reviewresta', 'ReviewRestController::restaId',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewresta/(:any)', 'ReviewRestController::restaId/$1',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewid/(:any)', 'ReviewRestController::reviewId/$1',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('reviewid/', 'ReviewRestController::reviewId',['namespace' => REST_NAMESPACE] ); 
     $routes->get('review/(:any)/(:any)', 'ReviewRestController::bymail/$1/$2',['namespace' => REST_NAMESPACE] ); 
     //$routes->delete('review', 'ReviewRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('review', 'ReviewRestController::modify',['namespace' => REST_NAMESPACE] );
