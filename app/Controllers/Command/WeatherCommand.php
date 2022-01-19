@@ -3,6 +3,7 @@
 namespace App\Controllers\Command;
 use CodeIgniter\CLI\CLI;
 use App\Controllers\BaseController;
+use App\Models\WeatherModel;
 
 class WeatherCommand extends BaseController
 {
@@ -23,18 +24,22 @@ class WeatherCommand extends BaseController
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
                 $result = curl_exec($curl);
                 $data = json_decode($result, true);
-                //$main = $data['main'];
-                //$wind= $data['wind'];
                 $wea= $data['weather'][0];
-                // foreach($main as $el) {
-                //     CLI::write($el);
-                // }
-                // foreach($wind as $el) {
-                //     CLI::write($el);
-                // }
+                $dataweather=array();
                 foreach($wea as $el) {
-                    CLI::write($el);
+                    array_push($dataweather, $el);
+                    //CLI::write($el);
                 }
+                $todayweather= new WeatherModel();
+                $todayweather->insert([
+                    'main'=>$dataweather[1],
+                    'description'=>$dataweather[2],
+                    'icon'=>$dataweather[3],
+                ]);
+                CLI::write($dataweather[1]);
+                CLI::write($dataweather[2]);
+                CLI::write($dataweather[3]);
+                
                 curl_close($curl);
             }else{
                 CLI::write("Peticion no disponible, error:" );
@@ -46,4 +51,12 @@ class WeatherCommand extends BaseController
 
 
     }
+    public function deletetable()
+    {
+        $table = new WeatherModel();
+        $table->db->table('weather')->where('id>',0)->delete();
+        $table->db->query("ALTER TABLE weather AUTO_INCREMENT=1 ");
+
+    }
+
 }
