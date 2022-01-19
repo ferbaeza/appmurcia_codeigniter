@@ -56,24 +56,20 @@ class ReviewsModel extends Model
             ->first();
         }
     }
-    public function createactualizarRev($review_id=null,$restaurant_id=null,$email=null,$descripcion=null,$punctuation=null)
-    {
-        $data=[
-            "review_id" => $review_id,
-            "restaurant_id" => $restaurant_id,
-            "email" => $email,
-            "descripcion" => $descripcion,
-            "punctuation" => $punctuation
-        ];
-       if(is_null($review_id)){
-           $newReview= new ReviewsEntity();
-       }else{
-            $newReview= new ReviewsEntity();
-       }
-    }
-   
     
+    public function contarReviewAverage($id=null){
 
+        return $this->where(['restaurant_id'=>$id])->selectAvg('puntuation')->first();
+        
+    }
+
+    public function contarNumeroReviews($id=null){
+
+        $restaurante=$this->where(['restaurant_id'=>$id])->findAll();
+        $numero=count($restaurante);
+        return $numero;
+     
+    }
 
 
     
