@@ -41,7 +41,16 @@ if(!defined('COMMAND_NAMESPACE')) define('COMMAND_NAMESPACE', 'App\Controllers\C
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+//--------------------------------------------------------------------
+// Command Routes
+//-------------------------------------------------------------------
+$routes->group('commands', function($routes){
+    $routes->cli('news', 'NewsCommand::index', ['namespace'=> COMMAND_NAMESPACE]);
+    $routes->cli('stations', 'StationsCommand::index',['namespace' => COMMAND_NAMESPACE] ); 
+    $routes->cli('videos', 'VideosCommand::index', ['namespace'=> COMMAND_NAMESPACE]);
+    $routes->cli('weather', 'WeatherCommand::index', ['namespace'=> COMMAND_NAMESPACE]);
 
+});
 
 
 

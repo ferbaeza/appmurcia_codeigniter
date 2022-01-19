@@ -19,7 +19,11 @@ Autorizar a las ramas a hacer push
 
 
 
+# News
+# https://www.laverdad.es/rss/2.0/portada
 
+# Videos
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCBUAES-IbWw30H-dn-GyHag
 
 
 
