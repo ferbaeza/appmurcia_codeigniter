@@ -16,13 +16,22 @@ class ReviewSeeder extends Seeder
 
         $review=[
             [
-            'description'=> 'Hemos comido muy bien y un trato exquisito de un camarero llamado Pedro. Me ha encantado el plato de embutido y el tomate partido con aceitunas y bonito',
-            'puntuation'=> 8.2,
-            'email'=> 'eldiariogourmet@mail.com',
-            'restaurant_id'=> 2,
-            'created_at'=> $created->format('Y-m-d H:i:s'),
-            'updated_at'=> $updated->format('Y-m-d H:i:s'),
-            ]
+                'description'=> 'Hemos comido muy bien y un trato exquisito de un camarero llamado Pedro. Me ha encantado el plato de embutido y el tomate partido con aceitunas y bonito',
+                'puntuation'=> 8.2,
+                'email'=> 'eldiariogourmet@mail.com',
+                'restaurant_id'=> 2,
+                'created_at'=> $created->format('Y-m-d H:i:s'),
+                'updated_at'=> $updated->format('Y-m-d H:i:s'),
+            ],
+            [
+                'description'=> 'Especialmente bueno',
+                'puntuation'=> 9.2,
+                'email'=> 'review@mail.com',
+                'restaurant_id'=> 1,
+                'created_at'=> $created->format('Y-m-d H:i:s'),
+                'updated_at'=> $updated->format('Y-m-d H:i:s'),
+                ]
+    
         ];
         d($review);
         $builder= $this->db->table('reviews');
