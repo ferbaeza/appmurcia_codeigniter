@@ -29,14 +29,18 @@ Autorizar a las ramas a hacer push
 --Commands--
 # php C:\laragon\www\appmurcia_codeigniter\public\index.php commands/news
 
+--Fecha de videos y news y descripcion de videos
+
+
+
+
+
+
+
+
 
 
 # CodeIgniter 4 Application Starter
-
-
-
-
-
 ## What is CodeIgniter?
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
