@@ -31,5 +31,12 @@ class WeatherModel extends Model
             ->first();
         }
     }
+    public function findWeather()
+    {
+        return $this->first();
+        
+    }
+
+    
 
 }

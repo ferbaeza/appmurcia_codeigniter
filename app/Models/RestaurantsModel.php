@@ -34,4 +34,6 @@ class RestaurantsModel extends Model
         }
     }
 
+    
+
 }

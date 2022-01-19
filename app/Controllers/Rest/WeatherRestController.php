@@ -10,7 +10,7 @@ class WeatherRestController extends RESTfulResourceController
     protected $category= "app\Models\WeatherModel"; 
     protected $format= "json";
 
-    public function index($id="")
+    public function index()
     {
         try{
             $data= "Ups, algo ha fallado, tu consulta no existe";

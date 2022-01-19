@@ -32,11 +32,13 @@ class ReviewsModel extends Model
             ->first();
         }
     }
-    public function findRevbymailandRest($email= null, $restaurant_id=null)
+
+    public function findRevbymailandRest($email=null, $restaurant_id=null)
     {
         $cond = "email ='$email' AND restaurant_id =$restaurant_id";
         return  $this->where($cond)->findAll();
     }
+
     public function findRestaId($restaurant_id= null)
     {
         if(is_null($restaurant_id)){
@@ -54,7 +56,20 @@ class ReviewsModel extends Model
             ->first();
         }
     }
+    
+    public function contarReviewAverage($id=null){
 
+        return $this->where(['restaurant_id'=>$id])->selectAvg('puntuation')->first();
+        
+    }
+
+    public function contarNumeroReviews($id=null){
+
+        $restaurante=$this->where(['restaurant_id'=>$id])->findAll();
+        $numero=count($restaurante);
+        return $numero;
+     
+    }
 
 
     
