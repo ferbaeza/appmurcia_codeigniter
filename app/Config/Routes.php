@@ -46,9 +46,13 @@ $routes->get('/', 'Home::index');
 //-------------------------------------------------------------------
 $routes->group('commands', function($routes){
     $routes->cli('news', 'NewsCommand::index', ['namespace'=> COMMAND_NAMESPACE]);
+    $routes->cli('delnews', 'NewsCommand::deletetable', ['namespace'=> COMMAND_NAMESPACE]);
     $routes->cli('stations', 'StationsCommand::index',['namespace' => COMMAND_NAMESPACE] ); 
+    $routes->cli('delstations', 'StationsCommand::deletetable',['namespace' => COMMAND_NAMESPACE] ); 
     $routes->cli('videos', 'VideosCommand::index', ['namespace'=> COMMAND_NAMESPACE]);
+    $routes->cli('delvideos', 'VideosCommand::deletetable', ['namespace'=> COMMAND_NAMESPACE]);
     $routes->cli('weather', 'WeatherCommand::index', ['namespace'=> COMMAND_NAMESPACE]);
+    $routes->cli('delweather', 'WeatherCommand::deletetable', ['namespace'=> COMMAND_NAMESPACE]);
 
 });
 

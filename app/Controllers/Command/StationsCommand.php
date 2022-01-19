@@ -80,4 +80,15 @@ class StationsCommand extends BaseController
 
 
     }
+    public function deletetable()
+    {
+        $table = new GasStationModel();
+        $table->db->table('gasstation')->where('id>',0)->delete();
+        $table->db->query("ALTER TABLE gasstation AUTO_INCREMENT=1 ");
+
+    }
+
+
+
+
 }
