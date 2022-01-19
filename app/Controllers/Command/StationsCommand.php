@@ -4,12 +4,16 @@ namespace App\Controllers\Command;
 
 use CodeIgniter\CLI\CLI;
 use App\Controllers\BaseController;
+use App\Models\GasStationModel;
+use CodeIgniter\I18n\Time;
 
 class StationsCommand extends BaseController
 {
     public function index()
     {
         try{
+            $gasstations = new GasStationModel();
+            $today = new Time();
             $client= service('curlrequest');
             $response = $client->request("GET", "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/", []);
             $response->getStatusCode();
@@ -28,21 +32,41 @@ class StationsCommand extends BaseController
                 //$local=$ess['Localidad'];
                 foreach($data as $el) {
                     if ($el['Provincia']=='MURCIA'){
+                        $label = $el['Rótulo'];
                         $provincia = $el['Provincia'];
                         $municipio = $el['Municipio'];
                         $latitud = $el['Latitud'];
                         $longitud = $el['Longitud (WGS84)'];
                         $ideess = $el['IDEESS'];
                         $address = $el['Dirección'];
-                        //$cp = $el['C.P.'];
+                        $station = $gasstations->findIdeess($ideess);
+                        //$station = $gasstations->where(['ideess'=>$ideess]);
+                        if ($station){
+                            $update=array(
+                                'id'=>$station->id,
+                                'label'=>$label,
+                                'provincia'=>$provincia,
+                                'municipio'=>$municipio,
+                                'latitud'=>$latitud,
+                                'longitud'=>$longitud,
+                                'address'=>$address,
+                            );
+                            $gasstations->save($update);
+                        }else{
+                            $newstation = new GasStationModel();
+                            $newstation->insert([
+                                'label'=> $label,
+                                'address'=>$address,
+                                'latitud'=>str_replace(',','.',$latitud),
+                                'longitud'=>str_replace(',','.',$longitud),
+                                'ideess'=>$ideess,
+                                'created_at'=>$today,
+                                'updated_at'=>$today,
+                            ]);
+                        }
                         CLI::write($provincia." localidad ".$municipio." Latitud ".$latitud." Longitud ".$longitud." IDEESS ".$ideess." Direccion ".$address);
                     }
                 }
-                // for ($i=0; $i< 1000 ;$i ++){
-                //     $data = $data[$i][''];
-                //     CLI::write($data);
-                // }
-                
     
                 curl_close($curl);
             }else{

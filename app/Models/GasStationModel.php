@@ -33,5 +33,13 @@ class GasStationModel extends Model
             ->first();
         }
     }
+    public function findIdeess($ideess=null){
+        if(is_null($ideess)){
+            return $this->findAll();
+        }else{
+            return $this->where(['ideess'=>$ideess])
+            ->first();
+        }
+    }
 
 }
