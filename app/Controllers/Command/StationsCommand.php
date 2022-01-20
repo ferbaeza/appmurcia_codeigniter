@@ -31,7 +31,7 @@ class StationsCommand extends BaseController
                 $data= $result['ListaEESSPrecio'];
                 //$local=$ess['Localidad'];
                 foreach($data as $el) {
-                    if ($el['Provincia']=='MURCIA'){
+                    if ($el['Localidad']=='MURCIA'){
                         $label = $el['Rótulo'];
                         $provincia = $el['Provincia'];
                         $municipio = $el['Municipio'];
