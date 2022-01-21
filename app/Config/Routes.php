@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('LoginController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -29,6 +29,7 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  */
 if(!defined('ADMIN_NAMESPACE')) define('ADMIN_NAMESPACE', 'App\Controllers\Admin');
+if(!defined('PUBLIC_NAMESPACE')) define('PUBLIC_NAMESPACE', 'App\Controllers\PublicSection');
 if(!defined('REST_NAMESPACE')) define('REST_NAMESPACE', 'App\Controllers\Rest');
 if(!defined('COMMAND_NAMESPACE')) define('COMMAND_NAMESPACE', 'App\Controllers\Command');
 
@@ -41,6 +42,21 @@ if(!defined('COMMAND_NAMESPACE')) define('COMMAND_NAMESPACE', 'App\Controllers\C
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+
+
+//----------------PUBLIC ROUTES-------------
+$routes->group('',function($routes){
+    $routes->get('/', 'LoginController::index', ['as' => "login" , 'namespace' => PUBLIC_NAMESPACE]);
+    
+});
+
+//----------------PRIVATE ROUTES-------------
+//$routes->group('admin',function($routes){
+    //$routes->get('home_admin', 'HomeController::index', ['as' => "home_admin" , 'namespace' => ADMIN_NAMESPACE]);
+    //$routes->get('usuarios', 'UsuariosController::index', ['as' => "usuarios", 'namespace' => ADMIN_NAMESPACE]);
+    //$routes->get('festivales', 'FestivalesController::index', ['as' => "festivales" , 'namespace' => ADMIN_NAMESPACE]);
+//});
+
 //--------------------------------------------------------------------
 // Command Routes
 //-------------------------------------------------------------------
