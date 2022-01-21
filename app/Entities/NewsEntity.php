@@ -18,4 +18,6 @@ class NewsEntity extends Entity
         'description'=>null,
     ];
 
+    
+
 }
