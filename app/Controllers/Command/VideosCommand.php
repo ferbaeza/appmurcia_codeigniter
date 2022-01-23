@@ -30,11 +30,13 @@ class VideosCommand extends BaseController
             $pubDate = $i->published;
             $url = $i->author->uri;
             $guid = $i->id;
+            $media = $i->children("http://search.yahoo.com/mrss/");
+            $description = $media->group->description;
             $n=$n+1;
             $y=$y+1;
-            $description = $i[0]->children('description');
-            CLI::write($description.$n);
-            //CLI::write($y."".$title."###".$pubDate."<<<>>>".$url."--".str_replace("yt:video:","" ,$guid)."".$description);
+            
+            //CLI::write($description."----------------------------------".$n);
+            CLI::write($y."".$title."###".$pubDate."<<<>>>".$url."--".str_replace("yt:video:","" ,$guid)."".$description);
             $newdatavideo= $datavideo->findGuid($guid);
             if ($newdatavideo){
                 $update=array(
