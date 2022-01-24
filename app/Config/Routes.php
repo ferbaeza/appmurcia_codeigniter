@@ -45,17 +45,18 @@ $routes->get('/', 'Home::index');
 
 
 //----------------PUBLIC ROUTES-------------
-$routes->group('',function($routes){
-    $routes->get('/', 'LoginController::index', ['as' => "login" , 'namespace' => PUBLIC_NAMESPACE]);
-    
+$routes->group('/',function($routes){
+    $routes->get('', 'LoginController::index', ['as' => "login" , 'namespace' => PUBLIC_NAMESPACE]);
+    $routes->post('/login/save', 'LoginController::verify', ['as' => "verify_login" , 'namespace' => PUBLIC_NAMESPACE]);
+    $routes->get('/logout', 'LogoutController::index', ['as' => "logout" , 'namespace' => PUBLIC_NAMESPACE]);
 });
 
 //----------------PRIVATE ROUTES-------------
-//$routes->group('admin',function($routes){
-    //$routes->get('home_admin', 'HomeController::index', ['as' => "home_admin" , 'namespace' => ADMIN_NAMESPACE]);
+$routes->group('admin',function($routes){
+    $routes->get('home_admin', 'UserAdminController::index', ['as' => "home_admin" , 'namespace' => ADMIN_NAMESPACE]);
     //$routes->get('usuarios', 'UsuariosController::index', ['as' => "usuarios", 'namespace' => ADMIN_NAMESPACE]);
     //$routes->get('festivales', 'FestivalesController::index', ['as' => "festivales" , 'namespace' => ADMIN_NAMESPACE]);
-//});
+});
 
 //--------------------------------------------------------------------
 // Command Routes

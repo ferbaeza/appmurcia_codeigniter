@@ -33,6 +33,6 @@ class RolesModel extends Model
             ->first();
         }
     }
-
+  
 
 }

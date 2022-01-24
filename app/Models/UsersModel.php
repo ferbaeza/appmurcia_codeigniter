@@ -34,5 +34,12 @@ class UsersModel extends Model
         }
     }
 
+    public function findUsers($username=null){
+        
+        $response = $this->where(['username' => $username])->orWhere(['email' => $username])->first();
+
+        return $response;
+    }
+
 
 }

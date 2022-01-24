@@ -35,9 +35,10 @@
                     if(respuesta.status=="OK"){
                         console.log("La petición ha ido correctamente");
                         if(respuesta.data.rol=='admin'){
-                            window.location.replace('<?= route_to('home_admin') ?>');
+                           console.log("Logueado correctamente!");
+                           window.location.replace('<?= route_to('home_admin') ?>');
                         }else{
-                            window.location.replace('<?= route_to('home_public') ?>');
+                            console.log("Logueado correctamente a home public!");
                         }
                         
                     }else{
@@ -68,21 +69,23 @@
 
 <center>
     <div class="caja">
+        <fieldset>
+            <legend>LogIn</legend>
+            <form method="POST" id="formulario_login">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Please Sign in</label>
+                <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Email">
+            </div>
+            <div class="mb-3">
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" id="password">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button> <br><br>
+            </form>
 
+            <div class="copy"><i class="far fa-copyright"></i> 2017-2021</div><br>
 
-        <form method="POST" id="formulario_login">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Please Sign in</label>
-            <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Email">
-        </div>
-        <div class="mb-3">
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" id="password">
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Submit</button> <br><br>
-        </form>
-
-        <div class="copy"><i class="far fa-copyright"></i> 2017-2021</div><br>
+        </fieldset>
 
     </div>
 
