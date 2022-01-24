@@ -3,6 +3,7 @@
 namespace App\Controllers\Command;
 
 use App\Controllers\BaseController;
+use App\Libraries\Utils;
 use App\Models\NewsModel;
 use CodeIgniter\CLI\CLI;
 use SimpleXMLElement;
@@ -32,6 +33,11 @@ class NewsCommand extends BaseController
             $guid = $i->guid;
             $description = $i->description;
             $y=$y+1;
+
+            //Tranformar fecha para poder guardarla en la base de datos
+            $transformDate=new Utils();
+            $pubDate=$transformDate->getDateInputFormat($pubDate);
+            
             //CLI::write($pubDate);
             CLI::write($y." - ".$title." guid ".$guid." -Date ".$pubDate." description ".$description."-----fuente----".$url);
             $newdatanews = $datanews->findGuid($guid);
