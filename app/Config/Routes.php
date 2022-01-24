@@ -116,6 +116,9 @@ $routes->group('rest',function($routes){
     $routes->get('news/(:any)', 'NewsRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
     //$routes->delete('news', 'NewsRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('news', 'NewsRestController::modify',['namespace' => REST_NAMESPACE] );
+
+    //-----------------videos---------------------//
+    $routes->get('videos', 'VideosRestController::index',['namespace' => REST_NAMESPACE] ); 
 });
 //--------------------------------------------------------------------
 // Command Routes
