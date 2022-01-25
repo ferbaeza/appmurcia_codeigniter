@@ -28,12 +28,12 @@ class GasStation extends Migration
             ],
             'latitud'=>[
                 'type' => 'DECIMAL',
-                'constraint' => "50,15",
+                'constraint' => "50,10",
                 'null' => false
             ],
             'longitud'=>[
                 'type' => 'DECIMAL',
-                'constraint' => "50,15",
+                'constraint' => "50,10",
                 'null' => false
             ],
             'ideess'=>[
