@@ -31,13 +31,13 @@ class Restaurants extends Migration
                 'null' => false
             ],
             'latitud'=>[
-                'type' => 'float',
-                'constraint' => 9,6,
+                'type' => 'DECIMAL',
+                'constraint' => "50,10",
                 'null' => false
             ],
             'longitud'=>[
-                'type' => 'float',
-                'constraint' => 9,6,
+                'type' => 'DECIMAL',
+                'constraint' => "50,10",
                 'null' => false
             ],
             'reviewAverage'=>[
