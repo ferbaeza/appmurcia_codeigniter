@@ -44,7 +44,7 @@ class VideosCommand extends BaseController
                     'title'=>$title,
                     'pubDate'=>$pubDate,
                     'url'=>$url,
-                    'guid'=>$guid,
+                    'guid'=>str_replace("yt:video:","" ,$guid),
                     'description'=> $description,        //$description,
                 );
                 $datavideo->save($update);
@@ -54,7 +54,7 @@ class VideosCommand extends BaseController
                     'title'=>$title,
                     'pubDate'=>$pubDate,
                     'url'=>$url,
-                    'guid'=>$guid,
+                    'guid'=>str_replace("yt:video:","" ,$guid),
                     'description'=>$description,
                 ]);
             }            
