@@ -72,6 +72,12 @@ class ReviewsModel extends Model
     }
 
 
+    public function findReviewDatatable($limitStart, $limitLenght) {
+        return $this->limit($limitLenght, $limitStart)
+                    ->find();
+    }
+
+
     
 
 }

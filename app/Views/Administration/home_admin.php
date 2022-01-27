@@ -8,7 +8,6 @@
 <?=  $this->section('javascript')  ?>
 
 
-</script>
 
 <?=  $this->endSection('javascript')  ?>
 

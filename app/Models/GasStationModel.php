@@ -42,4 +42,9 @@ class GasStationModel extends Model
         }
     }
 
+    public function findGasDatatable($limitStart, $limitLenght) {
+        return $this->limit($limitLenght, $limitStart)
+                    ->find();
+    }
+
 }

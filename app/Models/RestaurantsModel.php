@@ -34,6 +34,11 @@ class RestaurantsModel extends Model
         }
     }
 
+    public function findRestaurantsDatatable($limitStart, $limitLenght) {
+        return $this->limit($limitLenght, $limitStart)
+                    ->find();
+    }
+
     
 
 }

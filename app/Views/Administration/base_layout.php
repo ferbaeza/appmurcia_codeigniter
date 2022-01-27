@@ -25,9 +25,8 @@
     <title><?= $this->renderSection("title") ?></title>
 </head>
 <body id="body-pd">
-    <div id="container">
-        <?= $this->renderSection("content")  ?>
-    </div>
+    <!-- <div id="container">
+    </div> -->
 
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
@@ -36,14 +35,14 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Panel Admin</span> </a>
-                <div class="nav_list"> <a href="<?= base_url('/admin/home_admin') ?>" class="nav_link active"> <i class="fas fa-home"></i> <span class="nav_name">Inicio</span> </a> <a href="<?= base_url('/admin/usuarios') ?>" class="nav_link"> <i class="fas fa-users"></i> <span class="nav_name">Usuarios</span> </a> <a href="<?= base_url('/admin/festivales') ?>" class="nav_link"> <i class="fas fa-music"></i> <span class="nav_name">Festivales</span> </a> <a href="<?= base_url('/admin/categorias') ?>" class="nav_link"> <i class="fas fa-table"></i><span class="nav_name">Categorías</span> </a> <a href="<?= base_url('/admin/roles') ?>" class="nav_link"> <i class="fas fa-user-tag"></i> <span class="nav_name">Roles</span> </a> </div>
+                <div class="nav_list"> <a href="<?= base_url('/admin/home_admin') ?>" class="nav_link active"> <i class="fas fa-home"></i> <span class="nav_name">Inicio</span> </a> <a href="<?= base_url('/admin/news') ?>" class="nav_link"> <i class="far fa-newspaper"></i> <span class="nav_name">Noticias</span> </a>  <a href="<?= base_url('/admin/gasstation') ?>" class="nav_link"> <i class="fas fa-gas-pump"></i><span class="nav_name">Gasolineras</span> </a><a href="<?= base_url('/admin/restaurantes') ?>" class="nav_link"> <i class="fas fa-utensils"></i> <span class="nav_name">Restaurantes</span> </a> <a href="<?= base_url('/admin/review') ?>" class="nav_link"> <i class="far fa-file-alt"></i> <span class="nav_name">Reviews</span> </a> </div>
             </div> <a href="<?= base_url('/logout') ?>" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Cerrar Sesión</span> </a>
         </nav>
     </div>
     <!--Container Main start-->
-    <!--<div class="height-100 bg-light">
-        
-    </div>-->
+    <div class="height-100 bg-light">
+    <?= $this->renderSection("content")  ?>
+    </div>
     <!--Container Main end-->
     
 </body>

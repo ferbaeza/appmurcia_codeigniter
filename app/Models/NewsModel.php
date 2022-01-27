@@ -41,5 +41,10 @@ class NewsModel extends Model
         }
     }
 
+    public function findNewsDatatable($limitStart, $limitLenght) {
+        return $this->limit($limitLenght, $limitStart)
+                    ->find();
+    }
+
 
 }

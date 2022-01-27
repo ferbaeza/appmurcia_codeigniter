@@ -54,8 +54,26 @@ $routes->group('/',function($routes){
 //----------------PRIVATE ROUTES-------------
 $routes->group('admin',function($routes){
     $routes->get('home_admin', 'UserAdminController::index', ['as' => "home_admin" , 'namespace' => ADMIN_NAMESPACE]);
-    //$routes->get('usuarios', 'UsuariosController::index', ['as' => "usuarios", 'namespace' => ADMIN_NAMESPACE]);
-    //$routes->get('festivales', 'FestivalesController::index', ['as' => "festivales" , 'namespace' => ADMIN_NAMESPACE]);
+
+    //---------RESTAURANTS---------
+    $routes->get('restaurantes', 'RestaurantesController::index', ['as' => "restaurantes", 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('restaurantes_data', 'RestaurantesController::getRestaurantesData',['as'=>'restaurantes_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+
+    //---------NEWS---------
+    $routes->get('news', 'NewsController::index', ['as' => "news", 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('news_data', 'NewsController::getNewsData',['as'=>'news_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+
+    //---------GasStation---------
+    $routes->get('gasstation', 'GasController::index', ['as' => "gasstation", 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('gas_data', 'GasController::getGasData',['as'=>'gas_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+
+    //---------Reviews---------
+    $routes->get('review', 'ReviewController::index', ['as' => "review", 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('review_data', 'ReviewController::getReviewData',['as'=>'review_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+
+    //---------Videos---------
+    $routes->get('videos', 'VideosController::index', ['as' => "videos", 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('videos_data', 'VideosController::getVideosData',['as'=>'videos_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
 });
 
 //--------------------------------------------------------------------
