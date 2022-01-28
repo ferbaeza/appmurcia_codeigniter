@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\VideosModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 class VideosController extends BaseController
 {
@@ -39,7 +40,21 @@ class VideosController extends BaseController
         );
 
         return json_encode($json_data);
-        
+    }
 
+    public function showVideosData($id=""){
+        
+        //Si llega corectamente el id estaremos editando
+        $videoM =new VideosModel();
+
+        $video = $videoM->findId($id);
+        if(is_null($video))
+            throw PageNotFoundException::forPageNotFound();
+        
+        //Cambio el titulo y le paso el festival que quiero editar
+        $data["title"]="Informacion Video"; 
+        $data["videos"]=$video;
+      
+        return view ("Administration/show_videos", $data);
     }
 }

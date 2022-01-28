@@ -22,41 +22,23 @@
                 {
                     "targets": 2,
                     "render": function (data, type, row, meta) {
-                        return row["description"];
+                        return row["address"];
                     }
                 },
                 {
                     "targets": 3,
                     "render": function (data, type, row, meta) {
-                        return row["address"];
+                        return row["reviewAverage"];
                     }
                 },
                 {
                     "targets": 4,
                     "render": function (data, type, row, meta) {
-                        return row["latitud"];
-                    }
-                },
-                {
-                    "targets": 5,
-                    "render": function (data, type, row, meta) {
-                        return row["longitud"];
-                    }
-                },
-                {
-                    "targets": 6,
-                    "render": function (data, type, row, meta) {
-                        return row["reviewAverage"];
-                    }
-                },
-                {
-                    "targets": 7,
-                    "render": function (data, type, row, meta) {
                         return row["numReviews"];
                     }
                 },
                 {
-                    "targets":8,
+                    "targets":5,
                     "render": function (data, type, row, meta) {
                         return '<button class="btn-danger deleteBtn"><i class="fa fa-trash"></i></button> <button class="btn-success editBtn"><i class="fa fa-edit"></i></button>';
                     }
@@ -165,10 +147,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-                    <th>Description</th>
                     <th>Direccion</th>
-                    <th>Latitud</th>
-                    <th>Longitud</th>
                     <th>Media puntuaciones</th>
                     <th>Numero de reviews</th>
                     <th>Acciones</th>

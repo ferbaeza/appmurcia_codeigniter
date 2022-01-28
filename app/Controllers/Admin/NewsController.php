@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\NewsModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 class NewsController extends BaseController
 {
@@ -39,7 +40,21 @@ class NewsController extends BaseController
         );
 
         return json_encode($json_data);
-        
 
+    }
+    public function showNewsData($id=""){
+ 
+        //Si llega corectamente el id estaremos editando
+        $newsM =new NewsModel();
+
+        $news = $newsM->findId($id);
+        if(is_null($news))
+            throw PageNotFoundException::forPageNotFound();
+        
+        //Cambio el titulo y le paso el festival que quiero editar
+        $data["title"]="Informacion Noticia"; 
+        $data["noticias"]=$news;
+      
+        return view ("Administration/show_news", $data);
     }
 }

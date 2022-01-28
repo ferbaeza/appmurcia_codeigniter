@@ -26,27 +26,9 @@
                     }
                 },
                 {
-                    "targets": 3,
+                    "targets":3,
                     "render": function (data, type, row, meta) {
-                        return row["url"];
-                    }
-                },
-                {
-                    "targets": 4,
-                    "render": function (data, type, row, meta) {
-                        return row["guid"];
-                    }
-                },
-                {
-                    "targets": 5,
-                    "render": function (data, type, row, meta) {
-                        return row["description"];
-                    }
-                },
-                {
-                    "targets":6,
-                    "render": function (data, type, row, meta) {
-                        return '<button class="btn-danger deleteBtn"><i class="fa fa-trash"></i></button> <button class="btn-success editBtn"><i class="fa fa-edit"></i></button>';
+                        return '<button class="btn-info infoBtn"><i class="fas fa-eye"></i></button>';
                     }
                 }
 
@@ -73,57 +55,13 @@
                         console.log(data);
                     }
                 }
-            });
-            $('#news_datatable').on('click', '.deleteBtn', function(){
-            console.log("Delete_OK");
-            //obtener datos de esa fila
-            var data = newsDatatable.row($(this).parents('tr')).data();
-            console.log(data);
-            console.log(data.id);
-                event.preventDefault();
-                $json_data ={
-                    "id": data.id
-                }
-                $.ajax({
-                    url: "<?= route_to('festivals_delete') ?>",
-                    type: "DELETE",
-                    data: JSON.stringify($json_data),
-                    processData: false,
-                    contentType: false,
-                    dataType: "json",
-                    async: true,
-                    timeout: 5000,
-                    beforeSend:(xhr) =>{
-
-                    },
-                    success: (response) =>{
-                        console.log(response);
-                        $('#news_datatable').DataTable().ajax.reload(null,false);
-                        
-
-                    },
-                    error: (xhr, status, error) =>{
-                        console.log(data);
-                        console.log("Se ha producido un error");
-                    },
-                    complete: () =>{
-
-                    }
-                });
-            });
-            $('#new').on('click',  function(){
-                console.log("New Festival");
-                window.location.href = "<?= route_to('festivals_add') ?>";
-
-            });            
-
-
-            $('#news_datatable tbody').on('click', '.editBtn', function(){
-                console.log("Modify_OK");
+            });         
+            $('#news_datatable tbody').on('click', '.infoBtn', function(){
+                
                 var data = newsDatatable.row($(this).parents('tr')).data();
                 console.log(data);
                 console.log(data.id);
-                window.location.href = "<?= route_to('festivals_add') ?>/"+data.id;
+                window.location.href = "/admin/news_show/"+data.id;
 
             });            
 
@@ -146,17 +84,12 @@
     <div class="container">
         <div class="height-100 bg-light m-auto ">
             <h1 class="h1 text-center">Noticias</h1>
-            <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
-
             <table id="news_datatable" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Titulo</th>
                     <th>Fecha Publicacion</th>
-                    <th>Url</th>
-                    <th>Guid</th>
-                    <th>Descripcion</th>
                     <th>Acciones</th>
                 </tr>
             </thead>

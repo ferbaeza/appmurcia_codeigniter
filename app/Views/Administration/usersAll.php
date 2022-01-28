@@ -28,29 +28,23 @@
                 {
                     "targets": 3,
                     "render": function (data, type, row, meta) {
-                        return row["password"];
+                        return row["name"];
                     }
                 },
                 {
                     "targets": 4,
                     "render": function (data, type, row, meta) {
-                        return row["name"];
+                        return row["surname"];
                     }
                 },
                 {
                     "targets": 5,
                     "render": function (data, type, row, meta) {
-                        return row["surname"];
-                    }
-                },
-                {
-                    "targets": 6,
-                    "render": function (data, type, row, meta) {
                         return row["rol_id"];
                     }
                 },
                 {
-                    "targets":7,
+                    "targets":6,
                     "render": function (data, type, row, meta) {
                         return '<button class="btn-danger deleteBtn"><i class="fa fa-trash"></i></button> <button class="btn-success editBtn"><i class="fa fa-edit"></i></button>';
                     }
@@ -151,7 +145,7 @@
     <!--Container Main start-->
     <div class="container">
         <div class="height-100 bg-light m-auto ">
-            <h1 class="h1 text-center">Reviews</h1>
+            <h1 class="h1 text-center">Usuarios</h1>
             <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
 
             <table id="users_datatable" class="display" style="width:100%">
@@ -160,7 +154,6 @@
                     <th>Id</th>
                     <th>Usuario</th>
                     <th>E-mail</th>
-                    <th>Contraseña</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Id Rol</th>

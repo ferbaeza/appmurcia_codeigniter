@@ -30,14 +30,7 @@
                     "render": function (data, type, row, meta) {
                         return row["icon"];
                     }
-                },
-                {
-                    "targets":4,
-                    "render": function (data, type, row, meta) {
-                        return '<button class="btn-danger deleteBtn"><i class="fa fa-trash"></i></button> <button class="btn-success editBtn"><i class="fa fa-edit"></i></button>';
-                    }
                 }
-
             ];
         $(document).ready( function(){
             let weatherDatatable = $('#weather_datatable').DataTable({
@@ -99,22 +92,7 @@
                     }
                 });
             });
-            $('#new').on('click',  function(){
-                console.log("New Festival");
-                window.location.href = "<?= route_to('festivals_add') ?>";
-
-            });            
-
-
-            $('#weather_datatable tbody').on('click', '.editBtn', function(){
-                console.log("Modify_OK");
-                var data = weatherDatatable.row($(this).parents('tr')).data();
-                console.log(data);
-                console.log(data.id);
-                window.location.href = "<?= route_to('festivals_add') ?>/"+data.id;
-
-            });            
-
+                     
         });
 
 
@@ -134,9 +112,6 @@
     <div class="container">
         <div class="height-100 bg-light m-auto ">
             <h1 class="h1 text-center">Weather</h1>
-
-            <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
-
             <table id="weather_datatable" class="display" style="width:100%">
             <thead>
                 <tr>
@@ -144,15 +119,10 @@
                     <th>Main</th>
                     <th>Descripcion</th>
                     <th>Icono</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>    
             </table>
         </div>
     </div>
     <!--Container Main end-->
-
-
-
-
 <?= $this->endSection() ?>

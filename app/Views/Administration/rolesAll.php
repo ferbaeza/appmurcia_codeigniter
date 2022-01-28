@@ -18,14 +18,7 @@
                     "render": function (data, type, row, meta) {
                         return row["name"];
                     }
-                },
-                {
-                    "targets":2,
-                    "render": function (data, type, row, meta) {
-                        return '<button class="btn-danger deleteBtn"><i class="fa fa-trash"></i></button> <button class="btn-success editBtn"><i class="fa fa-edit"></i></button>';
-                    }
                 }
-
             ];
         $(document).ready( function(){
             let rolesDatatable = $('#roles_datatable').DataTable({
@@ -121,15 +114,12 @@
     <!--Container Main start-->
     <div class="container">
         <div class="height-100 bg-light m-auto ">
-            <h1 class="h1 text-center">Reviews</h1>
-            <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
-
+            <h1 class="h1 text-center">Roles</h1>
             <table id="roles_datatable" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Rol</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
             </table>

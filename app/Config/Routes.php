@@ -62,11 +62,13 @@ $routes->group('admin',function($routes){
     //---------NEWS---------
     $routes->get('news', 'NewsController::index', ['as' => "news", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('news_data', 'NewsController::getNewsData',['as'=>'news_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('news_show/(:any)', 'NewsController::showNewsData/$1',['namespace' => ADMIN_NAMESPACE] );  //Get Data
 
     //---------GasStation---------
     $routes->get('gasstation', 'GasController::index', ['as' => "gasstation", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('gas_data', 'GasController::getGasData',['as'=>'gas_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
-
+    $routes->get('gas_show/(:any)', 'GasController::showGasData/$1',['namespace' => ADMIN_NAMESPACE] );  //Get Data
+   
     //---------Reviews---------
     $routes->get('review', 'ReviewController::index', ['as' => "review", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('review_data', 'ReviewController::getReviewData',['as'=>'review_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
@@ -74,6 +76,7 @@ $routes->group('admin',function($routes){
     //---------Videos---------
     $routes->get('videos', 'VideosController::index', ['as' => "videos", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('videos_data', 'VideosController::getVideosData',['as'=>'videos_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('videos_show/(:any)', 'VideosController::showVideosData/$1',['namespace' => ADMIN_NAMESPACE] );  //Get Data
 
     //---------Weather---------
     $routes->get('weather', 'WeatherController::index', ['as' => "weather", 'namespace' => ADMIN_NAMESPACE]);

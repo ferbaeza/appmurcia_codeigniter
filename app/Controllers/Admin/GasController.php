@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\GasStationModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 class GasController extends BaseController
 {
@@ -39,7 +40,21 @@ class GasController extends BaseController
         );
 
         return json_encode($json_data);
-        
+    }
 
+    public function showGasData($id=""){
+        
+        //Si llega corectamente el id estaremos editando
+        $gasM =new GasStationModel();
+
+        $gas = $gasM->findId($id);
+        if(is_null($gas))
+            throw PageNotFoundException::forPageNotFound();
+        
+        //Cambio el titulo y le paso el festival que quiero editar
+        $data["title"]="Informacion Gasolinera"; 
+        $data["gasolinera"]=$gas;
+      
+        return view ("Administration/show_gas", $data);
     }
 }
