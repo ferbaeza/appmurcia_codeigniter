@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "targets":6,
+                    "targets":5,
                     "render": function (data, type, row, meta) {
                         return '<button class="btn-danger deleteBtn"><i class="fa fa-trash"></i></button> <button class="btn-success editBtn"><i class="fa fa-edit"></i></button>';
                     }
@@ -139,8 +139,7 @@
     <!--Container Main start-->
     <div class="container">
         <div class="height-100 bg-light m-auto ">
-            <h1 class="h1 text-center">Bienvenido <?= $session->get("username");  ?></h1>
-            <h1 class="h1 text-center">Festivals Panel Admin</h1>
+            <h1 class="h1 text-center">Reviews</h1>
             <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
 
             <table id="review_datatable" class="display" style="width:100%">
@@ -154,16 +153,9 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-    
-    
             </table>
-
-
         </div>
     </div>
     <!--Container Main end-->
-
-
-
 
 <?= $this->endSection() ?>

@@ -33,6 +33,9 @@ class RolesModel extends Model
             ->first();
         }
     }
-  
+    public function findRolesDatatable($limitStart, $limitLenght) {
+        return $this->limit($limitLenght, $limitStart)
+                    ->find();
+    }
 
 }

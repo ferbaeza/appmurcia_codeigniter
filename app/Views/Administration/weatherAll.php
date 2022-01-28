@@ -16,35 +16,23 @@
                 {
                     "targets": 1,
                     "render": function (data, type, row, meta) {
-                        return row["label"];
+                        return row["main"];
                     }
                 },
                 {
                     "targets": 2,
                     "render": function (data, type, row, meta) {
-                        return row["address"];
+                        return row["description"];
                     }
                 },
                 {
                     "targets": 3,
                     "render": function (data, type, row, meta) {
-                        return row["latitud"];
+                        return row["icon"];
                     }
                 },
                 {
-                    "targets": 4,
-                    "render": function (data, type, row, meta) {
-                        return row["longitud"];
-                    }
-                },
-                {
-                    "targets": 5,
-                    "render": function (data, type, row, meta) {
-                        return row["ideess"];
-                    }
-                },
-                {
-                    "targets":6,
+                    "targets":4,
                     "render": function (data, type, row, meta) {
                         return '<button class="btn-danger deleteBtn"><i class="fa fa-trash"></i></button> <button class="btn-success editBtn"><i class="fa fa-edit"></i></button>';
                     }
@@ -52,7 +40,7 @@
 
             ];
         $(document).ready( function(){
-            let gasDatatable = $('#gas_datatable').DataTable({
+            let weatherDatatable = $('#weather_datatable').DataTable({
                 "processing":true, //Muestra el 'cargando' de la pagina
                 "responsive":true, //Permitirá que la tabla se ajuste automaticamente
                 "serverSide":true, //Activar Ajax
@@ -66,7 +54,7 @@
                     $(oSettings.nTableWrapper).find('dataTables_paginate').show();
                 },
                 "ajax" : { //Petición Ajax que obtendrá los datos del datatable
-                    url: "<?= route_to('gas_data') ?>",
+                    url: "<?= route_to('weather_data') ?>",
                     type:"POST",
                     data: function() {},
                     error: function(data){
@@ -74,10 +62,10 @@
                     }
                 }
             });
-            $('#gas_datatable').on('click', '.deleteBtn', function(){
+            $('#weather_datatable').on('click', '.deleteBtn', function(){
             console.log("Delete_OK");
             //obtener datos de esa fila
-            var data = gasDatatable.row($(this).parents('tr')).data();
+            var data = weatherDatatable.row($(this).parents('tr')).data();
             console.log(data);
             console.log(data.id);
                 event.preventDefault();
@@ -98,7 +86,7 @@
                     },
                     success: (response) =>{
                         console.log(response);
-                        $('#gas_datatable').DataTable().ajax.reload(null,false);
+                        $('#weather_datatable').DataTable().ajax.reload(null,false);
                         
 
                     },
@@ -118,9 +106,9 @@
             });            
 
 
-            $('#gas_datatable tbody').on('click', '.editBtn', function(){
+            $('#weather_datatable tbody').on('click', '.editBtn', function(){
                 console.log("Modify_OK");
-                var data = gasDatatable.row($(this).parents('tr')).data();
+                var data = weatherDatatable.row($(this).parents('tr')).data();
                 console.log(data);
                 console.log(data.id);
                 window.location.href = "<?= route_to('festivals_add') ?>/"+data.id;
@@ -145,26 +133,21 @@
     <!--Container Main start-->
     <div class="container">
         <div class="height-100 bg-light m-auto ">
-            <h1 class="h1 text-center">Gasolineras</h1>
+            <h1 class="h1 text-center">Weather</h1>
+
             <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
 
-            <table id="gas_datatable" class="display" style="width:100%">
+            <table id="weather_datatable" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Label</th>
-                    <th>Direccion</th>
-                    <th>Latitud</th>
-                    <th>Longitud</th>
-                    <th>Ideess</th>
+                    <th>Main</th>
+                    <th>Descripcion</th>
+                    <th>Icono</th>
                     <th>Acciones</th>
                 </tr>
-            </thead>
-    
-    
+            </thead>    
             </table>
-
-
         </div>
     </div>
     <!--Container Main end-->

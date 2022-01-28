@@ -16,31 +16,31 @@
                 {
                     "targets": 1,
                     "render": function (data, type, row, meta) {
-                        return row["label"];
+                        return row["title"];
                     }
                 },
                 {
                     "targets": 2,
                     "render": function (data, type, row, meta) {
-                        return row["address"];
+                        return row["pubDate"];
                     }
                 },
                 {
                     "targets": 3,
                     "render": function (data, type, row, meta) {
-                        return row["latitud"];
+                        return row["url"];
                     }
                 },
                 {
                     "targets": 4,
                     "render": function (data, type, row, meta) {
-                        return row["longitud"];
+                        return row["guid"];
                     }
                 },
                 {
                     "targets": 5,
                     "render": function (data, type, row, meta) {
-                        return row["ideess"];
+                        return row["description"];
                     }
                 },
                 {
@@ -52,7 +52,7 @@
 
             ];
         $(document).ready( function(){
-            let gasDatatable = $('#gas_datatable').DataTable({
+            let videosDatatable = $('#videos_datatable').DataTable({
                 "processing":true, //Muestra el 'cargando' de la pagina
                 "responsive":true, //Permitirá que la tabla se ajuste automaticamente
                 "serverSide":true, //Activar Ajax
@@ -66,7 +66,7 @@
                     $(oSettings.nTableWrapper).find('dataTables_paginate').show();
                 },
                 "ajax" : { //Petición Ajax que obtendrá los datos del datatable
-                    url: "<?= route_to('gas_data') ?>",
+                    url: "<?= route_to('videos_data') ?>",
                     type:"POST",
                     data: function() {},
                     error: function(data){
@@ -74,10 +74,10 @@
                     }
                 }
             });
-            $('#gas_datatable').on('click', '.deleteBtn', function(){
+            $('#videos_datatable').on('click', '.deleteBtn', function(){
             console.log("Delete_OK");
             //obtener datos de esa fila
-            var data = gasDatatable.row($(this).parents('tr')).data();
+            var data = videosDatatable.row($(this).parents('tr')).data();
             console.log(data);
             console.log(data.id);
                 event.preventDefault();
@@ -98,7 +98,7 @@
                     },
                     success: (response) =>{
                         console.log(response);
-                        $('#gas_datatable').DataTable().ajax.reload(null,false);
+                        $('#videos_datatable').DataTable().ajax.reload(null,false);
                         
 
                     },
@@ -118,9 +118,9 @@
             });            
 
 
-            $('#gas_datatable tbody').on('click', '.editBtn', function(){
+            $('#videos_datatable tbody').on('click', '.editBtn', function(){
                 console.log("Modify_OK");
-                var data = gasDatatable.row($(this).parents('tr')).data();
+                var data = videosDatatable.row($(this).parents('tr')).data();
                 console.log(data);
                 console.log(data.id);
                 window.location.href = "<?= route_to('festivals_add') ?>/"+data.id;
@@ -145,18 +145,18 @@
     <!--Container Main start-->
     <div class="container">
         <div class="height-100 bg-light m-auto ">
-            <h1 class="h1 text-center">Gasolineras</h1>
+            <h1 class="h1 text-center">Videos</h1>
             <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
 
-            <table id="gas_datatable" class="display" style="width:100%">
+            <table id="videos_datatable" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Label</th>
-                    <th>Direccion</th>
-                    <th>Latitud</th>
-                    <th>Longitud</th>
-                    <th>Ideess</th>
+                    <th>Titulo</th>
+                    <th>Fecha Publicacion</th>
+                    <th>Url</th>
+                    <th>Guid</th>
+                    <th>Descripcion</th>
                     <th>Acciones</th>
                 </tr>
             </thead>

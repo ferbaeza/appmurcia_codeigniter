@@ -145,8 +145,7 @@
     <!--Container Main start-->
     <div class="container">
         <div class="height-100 bg-light m-auto ">
-            <h1 class="h1 text-center">Bienvenido <?= $session->get("username");  ?></h1>
-            <h1 class="h1 text-center">Festivals Panel Admin</h1>
+            <h1 class="h1 text-center">Noticias</h1>
             <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
 
             <table id="news_datatable" class="display" style="width:100%">

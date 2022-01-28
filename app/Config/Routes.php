@@ -74,6 +74,20 @@ $routes->group('admin',function($routes){
     //---------Videos---------
     $routes->get('videos', 'VideosController::index', ['as' => "videos", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('videos_data', 'VideosController::getVideosData',['as'=>'videos_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+
+    //---------Weather---------
+    $routes->get('weather', 'WeatherController::index', ['as' => "weather", 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('weather_data', 'WeatherController::getWeatherData',['as'=>'weather_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+
+    //---------Users---------
+    $routes->get('users', 'UsersController::index', ['as' => "users", 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('users_data', 'UsersController::getUsersData',['as'=>'users_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+
+    //---------Roles---------
+    $routes->get('roles', 'RolesController::index', ['as' => "roles", 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('roles_data', 'RolesController::getRolesData',['as'=>'roles_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+
+
 });
 
 //--------------------------------------------------------------------

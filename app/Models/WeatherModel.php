@@ -37,6 +37,9 @@ class WeatherModel extends Model
         
     }
 
-    
+    public function findWeatherDatatable($limitStart, $limitLenght) {
+        return $this->limit($limitLenght, $limitStart)
+                    ->find();
+    }
 
 }

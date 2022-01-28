@@ -42,5 +42,8 @@ class VideosModel extends Model
         }
     }
 
-
+    public function findVideosDatatable($limitStart, $limitLenght) {
+        return $this->limit($limitLenght, $limitStart)
+                    ->find();
+    }
 }
