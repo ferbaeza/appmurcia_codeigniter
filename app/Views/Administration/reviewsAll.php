@@ -79,7 +79,7 @@
                     "id": data.id
                 }
                 $.ajax({
-                    url: "<?= route_to('festivals_delete') ?>",
+                    url: "<?= route_to('review_delete') ?>",
                     type: "DELETE",
                     data: JSON.stringify($json_data),
                     processData: false,
@@ -106,8 +106,8 @@
                 });
             });
             $('#new').on('click',  function(){
-                console.log("New Festival");
-                window.location.href = "<?= route_to('festivals_add') ?>";
+                console.log("New Review");
+                window.location.href = "<?= route_to('review_form') ?>";
 
             });            
 
@@ -117,7 +117,7 @@
                 var data = reviewDatatable.row($(this).parents('tr')).data();
                 console.log(data);
                 console.log(data.id);
-                window.location.href = "<?= route_to('festivals_add') ?>/"+data.id;
+                window.location.href = "<?= route_to('review_form') ?>/"+data.id;
 
             });            
 
@@ -140,7 +140,7 @@
     <div class="container">
         <div class="height-100 bg-light m-auto ">
             <h1 class="h1 text-center">Reviews</h1>
-            <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
+            <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">Nuevo Review</button>
 
             <table id="review_datatable" class="display" style="width:100%">
             <thead>

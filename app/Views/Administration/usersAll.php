@@ -85,7 +85,7 @@
                     "id": data.id
                 }
                 $.ajax({
-                    url: "<?= route_to('festivals_delete') ?>",
+                    url: "<?= route_to('users_delete') ?>",
                     type: "DELETE",
                     data: JSON.stringify($json_data),
                     processData: false,
@@ -112,8 +112,8 @@
                 });
             });
             $('#new').on('click',  function(){
-                console.log("New Festival");
-                window.location.href = "<?= route_to('festivals_add') ?>";
+                console.log("New User");
+                window.location.href = "<?= route_to('users_form') ?>";
 
             });            
 
@@ -123,7 +123,7 @@
                 var data = usersDatatable.row($(this).parents('tr')).data();
                 console.log(data);
                 console.log(data.id);
-                window.location.href = "<?= route_to('festivals_add') ?>/"+data.id;
+                window.location.href = "<?= route_to('users_form') ?>/"+data.id;
 
             });            
 
@@ -146,7 +146,7 @@
     <div class="container">
         <div class="height-100 bg-light m-auto ">
             <h1 class="h1 text-center">Usuarios</h1>
-            <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
+            <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">Nuevo Usuario</button>
 
             <table id="users_datatable" class="display" style="width:100%">
             <thead>

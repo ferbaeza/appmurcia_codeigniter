@@ -10,7 +10,7 @@ class RestaurantsModel extends Model
     protected $table            = 'restaurants';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = RestaurantsModel::class;
     protected $useSoftDeletes   = true;
     protected $allowedFields    = ['name','description', 'address', 'latitud', 'longitud', 'reviewAverage', 'numReviews' ];
 

@@ -69,17 +69,15 @@
                 }
             });
             $('#restaurantes_datatable').on('click', '.deleteBtn', function(){
-            console.log("Delete_OK");
-            //obtener datos de esa fila
+
             var data = restaurantesDatatable.row($(this).parents('tr')).data();
-            console.log(data);
-            console.log(data.id);
+
                 event.preventDefault();
                 $json_data ={
                     "id": data.id
                 }
                 $.ajax({
-                    url: "<?= route_to('festivals_delete') ?>",
+                    url: "<?= route_to('restaurante_delete') ?>",
                     type: "DELETE",
                     data: JSON.stringify($json_data),
                     processData: false,
@@ -94,30 +92,25 @@
                         console.log(response);
                         $('#restaurantes_datatable').DataTable().ajax.reload(null,false);
                         
-
                     },
                     error: (xhr, status, error) =>{
                         console.log(data);
                         console.log("Se ha producido un error");
                     },
-                    complete: () =>{
-
-                    }
+                    complete: () =>{}
                 });
             });
             $('#new').on('click',  function(){
                 console.log("New Festival");
-                window.location.href = "<?= route_to('festivals_add') ?>";
+                window.location.href = "<?= route_to('restaurantes_form') ?>";
 
             });            
-
-
             $('#restaurantes_datatable tbody').on('click', '.editBtn', function(){
                 console.log("Modify_OK");
                 var data = restaurantesDatatable.row($(this).parents('tr')).data();
                 console.log(data);
                 console.log(data.id);
-                window.location.href = "<?= route_to('festivals_add') ?>/"+data.id;
+                window.location.href = "<?= route_to('restaurantes_form') ?>/"+data.id;
 
             });            
 
@@ -140,7 +133,7 @@
     <div class="container">
         <div class="height-100 bg-light m-auto ">
             <h1 class="h1 text-center">Restaurantes</h1>
-            <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">New Entry</button>
+            <button type="submit" class="btn btn-primary mb-3 mx-3" id="new">Nuevo Restaurante</button>
 
             <table id="restaurantes_datatable" class="display" style="width:100%">
             <thead>

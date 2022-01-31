@@ -58,7 +58,11 @@ $routes->group('admin',function($routes){
     //---------RESTAURANTS---------
     $routes->get('restaurantes', 'RestaurantesController::index', ['as' => "restaurantes", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('restaurantes_data', 'RestaurantesController::getRestaurantesData',['as'=>'restaurantes_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
-
+    $routes->get('restaurantes_form', 'RestaurantesController::newEditRestaurante', ['as' => 'restaurantes_form' , 'namespace' => ADMIN_NAMESPACE]);
+    $routes->get('restaurantes_form/(:any)', 'RestaurantesController::newEditRestaurante/$1', ['namespace' => ADMIN_NAMESPACE]);
+    $routes->post('save_restaurante', 'RestaurantesController::saveRestaurante',['as'=>'save_restaurante','namespace' => ADMIN_NAMESPACE] );
+    $routes->delete('restaurante_delete', 'RestaurantesController::deleteRestaurante',['as'=>'restaurante_delete','namespace' => ADMIN_NAMESPACE] );
+    
     //---------NEWS---------
     $routes->get('news', 'NewsController::index', ['as' => "news", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('news_data', 'NewsController::getNewsData',['as'=>'news_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
@@ -72,7 +76,11 @@ $routes->group('admin',function($routes){
     //---------Reviews---------
     $routes->get('review', 'ReviewController::index', ['as' => "review", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('review_data', 'ReviewController::getReviewData',['as'=>'review_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
-
+    $routes->get('review_form', 'ReviewController::newEditReview', ['as' => 'review_form' , 'namespace' => ADMIN_NAMESPACE]);
+    $routes->get('review_form/(:any)', 'ReviewController::newEditReview/$1', ['namespace' => ADMIN_NAMESPACE]);
+    $routes->post('save_review', 'ReviewController::saveReview',['as'=>'save_review','namespace' => ADMIN_NAMESPACE] );
+    $routes->delete('review_delete', 'ReviewController::deleteReview',['as'=>'review_delete','namespace' => ADMIN_NAMESPACE] );
+    
     //---------Videos---------
     $routes->get('videos', 'VideosController::index', ['as' => "videos", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('videos_data', 'VideosController::getVideosData',['as'=>'videos_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
@@ -85,7 +93,11 @@ $routes->group('admin',function($routes){
     //---------Users---------
     $routes->get('users', 'UsersController::index', ['as' => "users", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('users_data', 'UsersController::getUsersData',['as'=>'users_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
-
+    $routes->get('users_form', 'UsersController::newEditUser', ['as' => 'users_form' , 'namespace' => ADMIN_NAMESPACE]);
+    $routes->get('users_form/(:any)', 'UsersController::newEditUser/$1', ['namespace' => ADMIN_NAMESPACE]);
+    $routes->post('save_users', 'UsersController::saveUser',['as'=>'save_users','namespace' => ADMIN_NAMESPACE] );
+    $routes->delete('users_delete', 'UsersController::deleteUser',['as'=>'users_delete','namespace' => ADMIN_NAMESPACE] );
+    
     //---------Roles---------
     $routes->get('roles', 'RolesController::index', ['as' => "roles", 'namespace' => ADMIN_NAMESPACE]);
     $routes->post('roles_data', 'RolesController::getRolesData',['as'=>'roles_data','namespace' => ADMIN_NAMESPACE] );  //Get Data

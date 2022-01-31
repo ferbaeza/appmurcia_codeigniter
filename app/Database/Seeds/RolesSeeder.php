@@ -20,6 +20,11 @@ class RolesSeeder extends Seeder
                 'created_at' =>$created->format('Y-m-d H:i:s'),
                 'updated_at' =>$updated->format('Y-m-d H:i:s'),
             ],
+            [
+                'name' => 'publico',
+                'created_at' =>$created->format('Y-m-d H:i:s'),
+                'updated_at' =>$updated->format('Y-m-d H:i:s'),
+            ],
         ];
         $builder = $this->db->table('roles');
         $builder->insertBatch($roles);

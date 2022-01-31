@@ -21,10 +21,33 @@
 
 <?=  $this->section('content')  ?>
 
-    <p class="ini">Inicio</p>
+    <h2 class="ini">Panel admin del Departamento de Turismo de Murcia</h2>
 
-    <h2>Bienvenido al panel admin</h2>
-    <p>Desde aquí podrás gestionar todos los contenidos de tu aplicación</p>
+    
+    <p>
+        En el panel admin podras ver la información que aparecerá en nuestra aplicación <br> <br>
+        Algunos campos no los podras modificar ya que provienen de API's públicas <br><br>
+        Esos campos son: 
+        <ul>
+            <li>Gasolineras</li>
+            <li>Videos</li>
+            <li>Noticias</li>
+            <li>Tiempo</li>
+            <li>Roles (Habrán dos Público y Admin)</li>
+        </ul>
+    
+        <br>
+        Los campos que si que podras modificar y deberán llevar un mantenimiento son: <br>
+        <ul>
+            <li>Usuarios</li>
+            <li>Reviews</li>
+            <li>Restaurantes</li>
+        </ul>
+
+        <br>
+
+    </p>
+
 
 
 <?=  $this->endSection('content')  ?>
