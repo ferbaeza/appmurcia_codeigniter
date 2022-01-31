@@ -68,26 +68,25 @@
 <?=  $this->section('content')  ?>
 
 <center>
-    <div class="caja">
-        <fieldset>
-            <legend>LogIn</legend>
-            <form method="POST" id="formulario_login">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Please Sign in</label>
-                <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Email">
-            </div>
-            <div class="mb-3">
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" id="password">
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Submit</button> <br><br>
-            </form>
+<img src="<?= base_url('assets/PublicSection/img/logoMurcia.png') ?>" class="foto"> 
+    <fieldset>
+        <form method="POST" id="formulario_login">
+        <div class="col-8 celda">
+            <label for="exampleInputEmail1" class="form-label pal">Please Sign in</label>
+            <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Email">
+        </div>
+        <div class="col-8 celda">
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" id="password">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button> <br><br>
+        </form>
 
-            <div class="copy"><i class="far fa-copyright"></i> 2017-2021</div><br>
+        <div class="copy"><i class="far fa-copyright"></i> Turismo Murcia Daw 2022</div><br>
 
-        </fieldset>
+    </fieldset>
 
-    </div>
+    
 
 </center>
 

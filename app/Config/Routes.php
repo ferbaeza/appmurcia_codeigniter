@@ -46,61 +46,61 @@ $routes->get('/', 'Home::index');
 
 //----------------PUBLIC ROUTES-------------
 $routes->group('/',function($routes){
-    $routes->get('', 'LoginController::index', ['as' => "login" , 'namespace' => PUBLIC_NAMESPACE]);
+    $routes->get('', 'LoginController::index', ['as' => "login" , 'filter'=>'auth', 'namespace' => PUBLIC_NAMESPACE]);
     $routes->post('/login/save', 'LoginController::verify', ['as' => "verify_login" , 'namespace' => PUBLIC_NAMESPACE]);
     $routes->get('/logout', 'LogoutController::index', ['as' => "logout" , 'namespace' => PUBLIC_NAMESPACE]);
 });
 
 //----------------PRIVATE ROUTES-------------
 $routes->group('admin',function($routes){
-    $routes->get('home_admin', 'UserAdminController::index', ['as' => "home_admin" , 'namespace' => ADMIN_NAMESPACE]);
+    $routes->get('home_admin', 'UserAdminController::index', ['as' => "home_admin" ,'filter'=>'auth_private', 'namespace' => ADMIN_NAMESPACE]);
 
     //---------RESTAURANTS---------
     $routes->get('restaurantes', 'RestaurantesController::index', ['as' => "restaurantes", 'namespace' => ADMIN_NAMESPACE]);
-    $routes->post('restaurantes_data', 'RestaurantesController::getRestaurantesData',['as'=>'restaurantes_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
-    $routes->get('restaurantes_form', 'RestaurantesController::newEditRestaurante', ['as' => 'restaurantes_form' , 'namespace' => ADMIN_NAMESPACE]);
-    $routes->get('restaurantes_form/(:any)', 'RestaurantesController::newEditRestaurante/$1', ['namespace' => ADMIN_NAMESPACE]);
-    $routes->post('save_restaurante', 'RestaurantesController::saveRestaurante',['as'=>'save_restaurante','namespace' => ADMIN_NAMESPACE] );
-    $routes->delete('restaurante_delete', 'RestaurantesController::deleteRestaurante',['as'=>'restaurante_delete','namespace' => ADMIN_NAMESPACE] );
+    $routes->post('restaurantes_data', 'RestaurantesController::getRestaurantesData',['as'=>'restaurantes_data','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('restaurantes_form', 'RestaurantesController::newEditRestaurante', ['as' => 'restaurantes_form','filter'=>'auth_private' , 'namespace' => ADMIN_NAMESPACE]);
+    $routes->get('restaurantes_form/(:any)', 'RestaurantesController::newEditRestaurante/$1', ['filter'=>'auth_private','namespace' => ADMIN_NAMESPACE]);
+    $routes->post('save_restaurante', 'RestaurantesController::saveRestaurante',['as'=>'save_restaurante','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );
+    $routes->delete('restaurante_delete', 'RestaurantesController::deleteRestaurante',['as'=>'restaurante_delete','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );
     
     //---------NEWS---------
-    $routes->get('news', 'NewsController::index', ['as' => "news", 'namespace' => ADMIN_NAMESPACE]);
-    $routes->post('news_data', 'NewsController::getNewsData',['as'=>'news_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
-    $routes->get('news_show/(:any)', 'NewsController::showNewsData/$1',['namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('news', 'NewsController::index', ['as' => "news",'filter'=>'auth_private', 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('news_data', 'NewsController::getNewsData',['as'=>'news_data','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('news_show/(:any)', 'NewsController::showNewsData/$1',['filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
 
     //---------GasStation---------
-    $routes->get('gasstation', 'GasController::index', ['as' => "gasstation", 'namespace' => ADMIN_NAMESPACE]);
-    $routes->post('gas_data', 'GasController::getGasData',['as'=>'gas_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
-    $routes->get('gas_show/(:any)', 'GasController::showGasData/$1',['namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('gasstation', 'GasController::index', ['as' => "gasstation",'filter'=>'auth_private', 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('gas_data', 'GasController::getGasData',['as'=>'gas_data','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('gas_show/(:any)', 'GasController::showGasData/$1',['filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
    
     //---------Reviews---------
-    $routes->get('review', 'ReviewController::index', ['as' => "review", 'namespace' => ADMIN_NAMESPACE]);
-    $routes->post('review_data', 'ReviewController::getReviewData',['as'=>'review_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
-    $routes->get('review_form', 'ReviewController::newEditReview', ['as' => 'review_form' , 'namespace' => ADMIN_NAMESPACE]);
-    $routes->get('review_form/(:any)', 'ReviewController::newEditReview/$1', ['namespace' => ADMIN_NAMESPACE]);
-    $routes->post('save_review', 'ReviewController::saveReview',['as'=>'save_review','namespace' => ADMIN_NAMESPACE] );
-    $routes->delete('review_delete', 'ReviewController::deleteReview',['as'=>'review_delete','namespace' => ADMIN_NAMESPACE] );
+    $routes->get('review', 'ReviewController::index', ['as' => "review",'filter'=>'auth_private', 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('review_data', 'ReviewController::getReviewData',['as'=>'review_data','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('review_form', 'ReviewController::newEditReview', ['as' => 'review_form' ,'filter'=>'auth_private', 'namespace' => ADMIN_NAMESPACE]);
+    $routes->get('review_form/(:any)', 'ReviewController::newEditReview/$1', ['filter'=>'auth_private','namespace' => ADMIN_NAMESPACE]);
+    $routes->post('save_review', 'ReviewController::saveReview',['as'=>'save_review','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );
+    $routes->delete('review_delete', 'ReviewController::deleteReview',['as'=>'review_delete','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );
     
     //---------Videos---------
-    $routes->get('videos', 'VideosController::index', ['as' => "videos", 'namespace' => ADMIN_NAMESPACE]);
-    $routes->post('videos_data', 'VideosController::getVideosData',['as'=>'videos_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
-    $routes->get('videos_show/(:any)', 'VideosController::showVideosData/$1',['namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('videos', 'VideosController::index', ['as' => "videos",'filter'=>'auth_private', 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('videos_data', 'VideosController::getVideosData',['as'=>'videos_data','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('videos_show/(:any)', 'VideosController::showVideosData/$1',['filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
 
     //---------Weather---------
-    $routes->get('weather', 'WeatherController::index', ['as' => "weather", 'namespace' => ADMIN_NAMESPACE]);
-    $routes->post('weather_data', 'WeatherController::getWeatherData',['as'=>'weather_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('weather', 'WeatherController::index', ['as' => "weather", 'filter'=>'auth_private','namespace' => ADMIN_NAMESPACE]);
+    $routes->post('weather_data', 'WeatherController::getWeatherData',['as'=>'weather_data','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
 
     //---------Users---------
-    $routes->get('users', 'UsersController::index', ['as' => "users", 'namespace' => ADMIN_NAMESPACE]);
-    $routes->post('users_data', 'UsersController::getUsersData',['as'=>'users_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
-    $routes->get('users_form', 'UsersController::newEditUser', ['as' => 'users_form' , 'namespace' => ADMIN_NAMESPACE]);
-    $routes->get('users_form/(:any)', 'UsersController::newEditUser/$1', ['namespace' => ADMIN_NAMESPACE]);
-    $routes->post('save_users', 'UsersController::saveUser',['as'=>'save_users','namespace' => ADMIN_NAMESPACE] );
-    $routes->delete('users_delete', 'UsersController::deleteUser',['as'=>'users_delete','namespace' => ADMIN_NAMESPACE] );
+    $routes->get('users', 'UsersController::index', ['as' => "users", 'filter'=>'auth_private','namespace' => ADMIN_NAMESPACE]);
+    $routes->post('users_data', 'UsersController::getUsersData',['as'=>'users_data','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('users_form', 'UsersController::newEditUser', ['as' => 'users_form' , 'filter'=>'auth_private','namespace' => ADMIN_NAMESPACE]);
+    $routes->get('users_form/(:any)', 'UsersController::newEditUser/$1', ['filter'=>'auth_private','namespace' => ADMIN_NAMESPACE]);
+    $routes->post('save_users', 'UsersController::saveUser',['as'=>'save_users','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );
+    $routes->delete('users_delete', 'UsersController::deleteUser',['as'=>'users_delete','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );
     
     //---------Roles---------
-    $routes->get('roles', 'RolesController::index', ['as' => "roles", 'namespace' => ADMIN_NAMESPACE]);
-    $routes->post('roles_data', 'RolesController::getRolesData',['as'=>'roles_data','namespace' => ADMIN_NAMESPACE] );  //Get Data
+    $routes->get('roles', 'RolesController::index', ['as' => "roles",'filter'=>'auth_private', 'namespace' => ADMIN_NAMESPACE]);
+    $routes->post('roles_data', 'RolesController::getRolesData',['as'=>'roles_data','filter'=>'auth_private','namespace' => ADMIN_NAMESPACE] );  //Get Data
 
 
 });

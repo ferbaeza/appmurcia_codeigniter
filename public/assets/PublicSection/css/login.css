@@ -1,37 +1,25 @@
-.main_login{
-    width: 30%;
-    margin: auto;
+fieldset{
+    width: 45%;
 }
-.logo{
-    width:50%;
-    margin:auto;
-    margin-top: 5%;
+.celda{
+    margin-bottom: 15px;
 }
-#signin{
-    margin: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    text-align: center;
+
+.pal{
+    color: white;
+    font-size: 18px;
 }
-#subLogin{
-    width: 100%;
+.copy{
+    color: rgb(167, 164, 164);
 }
-.backhome{
-    width: auto;
-    margin: 0 auto;
-    text-align: center;
+
+.foto{
+    width: 300px;
+    height: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
-#log_p{
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-#logo{
-    height: 260px;
-}
-.pass_show{
-    display: block;
-    color: brown;
-}
-.pass_error{
-    display: block;
+
+body{
+    background-color: rgb(112, 60, 112);
 }
