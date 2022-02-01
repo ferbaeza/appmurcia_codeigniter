@@ -23,9 +23,9 @@ class WeatherModel extends Model
     public function findId($id =null)
     {
         if(is_null($id)){
-            return $this->findAll();
+            return $this->first();
         }else  if($id==""){
-           return $this->findAll();
+           return $this->first();
         }else{
         return $this->where(['id'=>$id])
             ->first();

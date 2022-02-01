@@ -14,10 +14,10 @@ class WeatherRestController extends RESTfulResourceController
     {
         try{
             $data= "Ups, algo ha fallado, tu consulta no existe";
-            $review = new WeatherModel();
-            $review = $review->findId($id);
-            if($review != null){
-                return $this->respond($review, 200, "Restaurante encontrado");
+            $weather = new WeatherModel();
+            $weather = $weather->findId();
+            if($weather != null){
+                return $this->respond($weather, 200, "Weather encontrado");
             }else{
                 return $this->respond($data, 404, "Tu consulta no existe");
             }
