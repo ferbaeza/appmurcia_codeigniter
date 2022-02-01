@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Entities\RestaurantEntity;
 use CodeIgniter\Model;
 use App\Entities\RestaurantsEntity;
 
@@ -10,7 +11,7 @@ class RestaurantsModel extends Model
     protected $table            = 'restaurants';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = RestaurantsModel::class;
+    protected $returnType       = RestaurantEntity::class;
     protected $useSoftDeletes   = true;
     protected $allowedFields    = ['name','description', 'address', 'latitud', 'longitud', 'reviewAverage', 'numReviews' ];
 

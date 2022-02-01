@@ -88,16 +88,15 @@ class RestaurantesController extends BaseController
                 "reviewAverage"=>$request->getVar("reviewAverage"),
                 "numReviews"=>$request->getVar("numReviews"),
             ];
-            //dd($data);
+            
             if(strcmp($data['id'],"")!==0){
-                //dd($data);
-                //var_dump($data);
                 $restaurante = $restM->findId($data["id"]);
                 if(is_null($restaurante))
                     return $util->getResponse("KO_NOT_FOUND", "El festival que quieres editar no esta en la BBDD");
             }else{
                 $restaurante = new RestaurantEntity();
             }
+            
             $restaurante->fill($data);
             $restM->save($restaurante);
             return $util->getResponse("Ok", "Festival guardado correctamente");
