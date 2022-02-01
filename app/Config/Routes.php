@@ -166,6 +166,7 @@ $routes->group('rest',function($routes){
 
     //-----------------videos---------------------//
     $routes->get('videos', 'VideosRestController::index',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('videos/(:any)', 'VideosRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
 });
 //--------------------------------------------------------------------
 // Command Routes

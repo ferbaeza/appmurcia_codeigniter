@@ -11,12 +11,12 @@ class VideosRestController extends RESTfulResourceController
     protected $category= "app\Models\RestaurantsModel"; 
     protected $format= "json";
 
-    public function index()
+    public function index($id=null)
     {
         try{
             $data= "Ups, algo ha fallado, tu consulta no existe";
             $video = new VideosModel();
-            $video = $video->findId();
+            $video = $video->findId($id);
             if($video != null){
                 return $this->respond($video, 200, "Videos encontrado");
             }else{
