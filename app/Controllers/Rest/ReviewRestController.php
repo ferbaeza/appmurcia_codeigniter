@@ -30,6 +30,23 @@ class ReviewRestController extends RESTfulResourceController
         }
     }
 
+    public function all($id="")
+    {
+        try{
+            $data= "Ups, algo ha fallado, tu consulta no existe";
+            $review = new ReviewsModel();
+            $review = $review->findId($id);
+            if($review != null){
+                return $this->respond($review, 200, "Review encontrada");
+            }else{
+                return $this->respond($data, 404, "Tu consulta no existe");
+            }
+
+        }catch(\Exception $e){
+            return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
+        }
+    }
+
     public function restaId($id="")
     {
         try{
@@ -129,7 +146,7 @@ class ReviewRestController extends RESTfulResourceController
             $body=$this->request->getJSON();
             $review = new ReviewsModel();
 
-            if($body->id){
+            if(isset($body->id)){
                 
                 $reviews = $review->findId($body->id);
                 if ($reviews) {
