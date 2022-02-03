@@ -145,6 +145,7 @@ $routes->group('rest',function($routes){
     //$routes->post('weather', 'WheatherRestController::modify',['namespace' => REST_NAMESPACE] );
     //-------------------------------------------------------------------
     //-----------------Review---------------------//
+    $routes->get('allreviews', 'ReviewRestController::all',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewall', 'ReviewRestController::index',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewall/(:any)', 'ReviewRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewrestauranteid', 'ReviewRestController::restaId',['namespace' => REST_NAMESPACE] ); 
@@ -167,6 +168,7 @@ $routes->group('rest',function($routes){
 
     //-----------------videos---------------------//
     $routes->get('videos', 'VideosRestController::index',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('videos/(:any)', 'VideosRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
     $routes->get('videos_one', 'VideosRestController::oneVideo',['namespace' => REST_NAMESPACE] ); 
 
 });
