@@ -57,7 +57,7 @@ class ReviewRestController extends RESTfulResourceController
                 return $this->respond($data, 400, "No se ha pasado el id del Restaurante");
             }else{
                 if($resta!=null){
-                    return $this->respond($resta, 200, "Tu consulta no existe");
+                    return $this->respond($resta, 200, "Tu consulta existe");
                 }else{
                     return $this->respond($data, 404, "Tu consulta no existe");
              }
