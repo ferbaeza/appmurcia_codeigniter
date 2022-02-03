@@ -151,13 +151,13 @@ class ReviewRestController extends RESTfulResourceController
 
                     $data=array(
                         "id"=>$body->restaurant_id,
-                        'name'=>$restauranteAct['name'],
-                        'description'=>$restauranteAct['description'],
-                        'address'=>$restauranteAct['address'],
-                        'latitud'=>$restauranteAct['latitud'],
-                        'longitud'=>$restauranteAct['longitud'],
+                        'name'=>$restauranteAct->name,
+                        'description'=>$restauranteAct->description,
+                        'address'=>$restauranteAct->address,
+                        'latitud'=>$restauranteAct->latitud,
+                        'longitud'=>$restauranteAct->longitud,
                         "reviewAverage"=>$reviewAverage->puntuation,
-                        "numReviews"=>$restauranteAct['description']
+                        "numReviews"=>$restauranteAct->description
                     );
 
                     $restaurante->save($data);
@@ -190,11 +190,11 @@ class ReviewRestController extends RESTfulResourceController
 
                     $data=array(
                         "id"=>$data['restaurant_id'],
-                        'name'=>$restauranteAct['name'],
-                        'description'=>$restauranteAct['description'],
-                        'address'=>$restauranteAct['address'],
-                        'latitud'=>$restauranteAct['latitud'],
-                        'longitud'=>$restauranteAct['longitud'],
+                        'name'=>$restauranteAct->name,
+                        'description'=>$restauranteAct->description,
+                        'address'=>$restauranteAct->address,
+                        'latitud'=>$restauranteAct->latitud,
+                        'longitud'=>$restauranteAct->longitud,
                         "reviewAverage"=>$reviewAverage->puntuation,
                         "numReviews"=>$numReviews
                     );
