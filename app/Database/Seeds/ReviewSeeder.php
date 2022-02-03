@@ -30,7 +30,16 @@ class ReviewSeeder extends Seeder
                 'restaurant_id'=> 1,
                 'created_at'=> $created->format('Y-m-d H:i:s'),
                 'updated_at'=> $updated->format('Y-m-d H:i:s'),
-                ]
+            ],
+            [
+                'description'=> 'Realmente bueno, una buena calidad-precio en un entorno muy tranquilo',
+                'puntuation'=> 9.3,
+                'email'=> 'mail@mail.com',
+                'restaurant_id'=> 1,
+                'created_at'=> $created->format('Y-m-d H:i:s'),
+                'updated_at'=> $updated->format('Y-m-d H:i:s'),
+            ]
+
     
         ];
         d($review);
