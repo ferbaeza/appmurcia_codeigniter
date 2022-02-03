@@ -32,6 +32,12 @@ class NewsModel extends Model
             ->first();
         }
     }
+
+    public function findone()
+    {      
+        return $this->first();  
+    }
+    
     public function findGuid($guid=null){
         if(is_null($guid)){
             return $this->findAll();

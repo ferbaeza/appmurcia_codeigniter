@@ -161,11 +161,14 @@ $routes->group('rest',function($routes){
     //-----------------News---------------------//
     $routes->get('news', 'NewsRestController::index',['namespace' => REST_NAMESPACE] ); 
     $routes->get('news/(:any)', 'NewsRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('news_one', 'NewsRestController::oneNew',['namespace' => REST_NAMESPACE] ); 
     //$routes->delete('news', 'NewsRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('news', 'NewsRestController::modify',['namespace' => REST_NAMESPACE] );
 
     //-----------------videos---------------------//
     $routes->get('videos', 'VideosRestController::index',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('videos_one', 'VideosRestController::oneVideo',['namespace' => REST_NAMESPACE] ); 
+
 });
 //--------------------------------------------------------------------
 // Command Routes
