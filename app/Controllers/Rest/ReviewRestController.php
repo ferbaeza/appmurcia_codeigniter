@@ -52,7 +52,7 @@ class ReviewRestController extends RESTfulResourceController
         try{
             $data= "Ups, algo ha fallado, tu consulta no existe";
             $resta = new ReviewsModel();
-            $resta = $resta->findRestaId($id);
+            $resta = $resta->findResta($id);
             if($id ==="" || $id==null){
                 return $this->respond($data, 400, "No se ha pasado el id del Restaurante");
             }else{
