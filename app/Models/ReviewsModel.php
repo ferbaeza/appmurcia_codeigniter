@@ -47,6 +47,14 @@ class ReviewsModel extends Model
             return $this->where(['restaurant_id'=>$restaurant_id])->findAll();
         }
     }
+    public function findResta($restaurant_id= null)
+    {
+        if(is_null($restaurant_id)){
+            return $this->findAll();
+        }else{
+            return $this->where(['restaurant_id'=>$restaurant_id])->findAll();
+        }
+    }
     public function redId($id =null)
     {
         if(is_null($id)){
