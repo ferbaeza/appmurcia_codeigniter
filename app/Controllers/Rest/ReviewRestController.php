@@ -138,6 +138,25 @@ class ReviewRestController extends RESTfulResourceController
 
 
     }
+    public function deleteReviewid($id="")
+    {
+        try{
+            $rev = new ReviewsModel();
+            $review= $rev->findId($id);
+            if($review){
+                $rev->delete(['id'=>$id]);
+                return $this->respond($review, 200, "Review ".$id." eliminada correctamente");
+            }else{
+                return $this->respond("La review solicitada no ha sido encontrada",200,"La review solicitada no ha sido encontrada");
+            }
+
+        }catch(\Exception $e){
+            return $this->respond("KO, Error grave en el servidor", 500, "KO, Error grave en el servidor");
+        }
+
+
+    }
+
 
     public function editCreateReview()
     {
@@ -226,6 +245,31 @@ class ReviewRestController extends RESTfulResourceController
             return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
         }
     }
+
+    public function newReview($restaurant_id="")
+    {
+        try{
+            $body=$this->request->getJSON();
+            $review = new ReviewsModel();
+    
+            if ($restaurant_id){
+                $data = array(
+                    "email" => $body->email,
+                    "description" => $body->description,
+                    "puntuation" => $body->puntuation,
+                    "restaurant_id"=>$restaurant_id
+                );
+                $newReview = new ReviewsEntity($data);
+                $review->save($newReview);
+                return $this->respond($data, 200, 'Review creada con exito');  
+            }else{
+                return $this->respond("",400,"Falta algun dato");
+            }
+        }catch(\Exception $e){
+            return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
+        }
+    }
+
 
     
 }

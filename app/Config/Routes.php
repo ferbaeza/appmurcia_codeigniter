@@ -154,6 +154,9 @@ $routes->group('rest',function($routes){
     $routes->get('reviewid/', 'ReviewRestController::reviewId',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewbymailbyrestid/(:any)/(:any)', 'ReviewRestController::bymailandId/$1/$2',['namespace' => REST_NAMESPACE] ); 
     $routes->post('reviewbymailbyrestid', 'ReviewRestController::editCreateReview',['namespace' => REST_NAMESPACE] ); 
+    $routes->post('reviewbymailbyrestid/(:any)', 'ReviewRestController::newReview/$1',['namespace' => REST_NAMESPACE] ); 
+    $routes->delete('deletereviewid/(:any)', 'ReviewRestController::deleteReviewid/$1',['namespace' => REST_NAMESPACE] ); 
+    $routes->delete('deletereview/', 'ReviewRestController::deleteReview',['namespace' => REST_NAMESPACE] ); 
     //$routes->get('reviewbymailbyrestid', 'ReviewRestController::bymailandId',['namespace' => REST_NAMESPACE] ); 
     // eldiariogourmet@mail.com  2
     $routes->delete('deletereview', 'ReviewRestController::deleteReview',['namespace' => REST_NAMESPACE] ); 
