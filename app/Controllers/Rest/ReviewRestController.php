@@ -129,7 +129,7 @@ class ReviewRestController extends RESTfulResourceController
                 $rev->delete(['id'=>$body->id]);
                 return $this->respond($review, 200, "Review ".$body->id." eliminada correctamente");
             }else{
-                return $this->respond("La review solicitada no ha sido encontrada",200,"La review solicitada no ha sido encontrada");
+                return $this->respond("La review solicitada no ha sido encontrada",404,"La review solicitada no ha sido encontrada");
             }
 
         }catch(\Exception $e){
@@ -147,7 +147,7 @@ class ReviewRestController extends RESTfulResourceController
                 $rev->delete(['id'=>$id]);
                 return $this->respond($review, 200, "Review ".$id." eliminada correctamente");
             }else{
-                return $this->respond("La review solicitada no ha sido encontrada",200,"La review solicitada no ha sido encontrada");
+                return $this->respond("La review solicitada no ha sido encontrada",404,"La review solicitada no ha sido encontrada");
             }
 
         }catch(\Exception $e){

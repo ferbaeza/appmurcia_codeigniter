@@ -18,7 +18,7 @@ class WeatherSeeder extends Seeder
             [
                 'main' => 'Soleado',
                 'description' => 'Soleado sin nubes',
-                'icon' => 'https://cdn.icon-icons.com/icons2/33/PNG/256/sunny_sunshine_weather_2778.png',
+                'icon' => '01n',
                 'created_at' =>$created->format('Y-m-d H:i:s'),
                 'updated_at' =>$updated->format('Y-m-d H:i:s'),
             ],
