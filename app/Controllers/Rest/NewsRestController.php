@@ -26,4 +26,22 @@ class NewsRestController extends RESTfulResourceController
             return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
         }
     }
+
+
+    public function oneNew()
+    {
+        try{
+            $data= "Ups, algo ha fallado, tu consulta no existe";
+            $review = new NewsModel();
+            $review = $review->findone();
+            if($review != null){
+                return $this->respond($review, 200, "Restaurante encontrado");
+            }else{
+                return $this->respond($data, 404, "Tu consulta no existe");
+            }
+
+        }catch(\Exception $e){
+            return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
+        }
+    }
 }

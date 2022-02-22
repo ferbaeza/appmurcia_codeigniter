@@ -145,6 +145,7 @@ $routes->group('rest',function($routes){
     //$routes->post('weather', 'WheatherRestController::modify',['namespace' => REST_NAMESPACE] );
     //-------------------------------------------------------------------
     //-----------------Review---------------------//
+    $routes->get('allreviews', 'ReviewRestController::all',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewall', 'ReviewRestController::index',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewall/(:any)', 'ReviewRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewrestauranteid', 'ReviewRestController::restaId',['namespace' => REST_NAMESPACE] ); 
@@ -153,6 +154,9 @@ $routes->group('rest',function($routes){
     $routes->get('reviewid/', 'ReviewRestController::reviewId',['namespace' => REST_NAMESPACE] ); 
     $routes->get('reviewbymailbyrestid/(:any)/(:any)', 'ReviewRestController::bymailandId/$1/$2',['namespace' => REST_NAMESPACE] ); 
     $routes->post('reviewbymailbyrestid', 'ReviewRestController::editCreateReview',['namespace' => REST_NAMESPACE] ); 
+    $routes->post('reviewbymailbyrestid/(:any)', 'ReviewRestController::newReview/$1',['namespace' => REST_NAMESPACE] ); 
+    $routes->delete('deletereviewid/(:any)', 'ReviewRestController::deleteReviewid/$1',['namespace' => REST_NAMESPACE] ); 
+    $routes->delete('deletereview/', 'ReviewRestController::deleteReview',['namespace' => REST_NAMESPACE] ); 
     //$routes->get('reviewbymailbyrestid', 'ReviewRestController::bymailandId',['namespace' => REST_NAMESPACE] ); 
     // eldiariogourmet@mail.com  2
     $routes->delete('deletereview', 'ReviewRestController::deleteReview',['namespace' => REST_NAMESPACE] ); 
@@ -161,11 +165,15 @@ $routes->group('rest',function($routes){
     //-----------------News---------------------//
     $routes->get('news', 'NewsRestController::index',['namespace' => REST_NAMESPACE] ); 
     $routes->get('news/(:any)', 'NewsRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('news_one', 'NewsRestController::oneNew',['namespace' => REST_NAMESPACE] ); 
     //$routes->delete('news', 'NewsRestController::deleteCategory',['namespace' => REST_NAMESPACE] ); 
     //$routes->post('news', 'NewsRestController::modify',['namespace' => REST_NAMESPACE] );
 
     //-----------------videos---------------------//
     $routes->get('videos', 'VideosRestController::index',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('videos/(:any)', 'VideosRestController::index/$1',['namespace' => REST_NAMESPACE] ); 
+    $routes->get('videos_one', 'VideosRestController::oneVideo',['namespace' => REST_NAMESPACE] ); 
+
 });
 //--------------------------------------------------------------------
 // Command Routes

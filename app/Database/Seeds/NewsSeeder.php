@@ -15,20 +15,20 @@ class NewsSeeder extends Seeder
         $updated= new Time();
         $pubDate = new Time('-1 day');
 
-        $new=[
-            [
-            'title'=> 'Murcia estrena nueva web de Turismo',
-            'pubDate'=> $pubDate->format('Y-m-d H:i:s'),
-            'url'=> 'http://appmurcia_codeigniter.test/',
-            'guid'=> 'New644R',
-            'description'=> 'The page you are looking at is being generated dynamically by CodeIgniter.',
-            'created_at'=> $created->format('Y-m-d H:i:s'),
-            'updated_at'=> $updated->format('Y-m-d H:i:s'),
-            ]
-        ];
-        d($new);
-        $builder= $this->db->table('news');
-        $builder->insertBatch($new);
+        // $new=[
+        //     [
+        //     'title'=> 'Murcia estrena nueva web de Turismo',
+        //     'pubDate'=> $pubDate->format('Y-m-d H:i:s'),
+        //     'url'=> 'http://appmurcia_codeigniter.test/',
+        //     'guid'=> 'New644R',
+        //     'description'=> 'The page you are looking at is being generated dynamically by CodeIgniter.',
+        //     'created_at'=> $created->format('Y-m-d H:i:s'),
+        //     'updated_at'=> $updated->format('Y-m-d H:i:s'),
+        //     ]
+        // ];
+        // d($new);
+        // $builder= $this->db->table('news');
+        // $builder->insertBatch($new);
 
     }
 }

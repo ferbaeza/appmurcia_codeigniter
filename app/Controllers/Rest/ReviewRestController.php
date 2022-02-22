@@ -30,17 +30,34 @@ class ReviewRestController extends RESTfulResourceController
         }
     }
 
+    public function all($id="")
+    {
+        try{
+            $data= "Ups, algo ha fallado, tu consulta no existe";
+            $review = new ReviewsModel();
+            $review = $review->findId($id);
+            if($review != null){
+                return $this->respond($review, 200, "Review encontrada");
+            }else{
+                return $this->respond($data, 404, "Tu consulta no existe");
+            }
+
+        }catch(\Exception $e){
+            return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
+        }
+    }
+
     public function restaId($id="")
     {
         try{
             $data= "Ups, algo ha fallado, tu consulta no existe";
             $resta = new ReviewsModel();
-            $resta = $resta->findRestaId($id);
+            $resta = $resta->findResta($id);
             if($id ==="" || $id==null){
                 return $this->respond($data, 400, "No se ha pasado el id del Restaurante");
             }else{
                 if($resta!=null){
-                    return $this->respond($resta, 200, "Tu consulta no existe");
+                    return $this->respond($resta, 200, "Tu consulta existe");
                 }else{
                     return $this->respond($data, 404, "Tu consulta no existe");
              }
@@ -112,7 +129,40 @@ class ReviewRestController extends RESTfulResourceController
                 $rev->delete(['id'=>$body->id]);
                 return $this->respond($review, 200, "Review ".$body->id." eliminada correctamente");
             }else{
-                return $this->respond("La review solicitada no ha sido encontrada",200,"La review solicitada no ha sido encontrada");
+                return $this->respond("La review solicitada no ha sido encontrada",404,"La review solicitada no ha sido encontrada");
+            }
+
+        }catch(\Exception $e){
+            return $this->respond("KO, Error grave en el servidor", 500, "KO, Error grave en el servidor");
+        }
+
+
+    }
+    public function deleteReviewid($id="")
+    {
+        try{
+            $rev = new ReviewsModel();
+            $review= $rev->findId($id);
+            if($review){
+                $rev->delete(['id'=>$id]);
+                return $this->respond($review, 200, "Review ".$id." eliminada correctamente");
+                $restaurante = new RestaurantsModel();
+                $restauranteAct=$restaurante->findId($review->restaurant_id);
+                    //$restaurante->actualizarRestaurant($data['restaurant_id'],$reviewAverage,$numReviews);
+
+                $data=array(
+                    "id"=>$restauranteAct->restaurant_id,
+                    'name'=>$restauranteAct->name,
+                    'description'=>$restauranteAct->description,
+                    'address'=>$restauranteAct->address,
+                    'latitud'=>$restauranteAct->latitud,
+                    'longitud'=>$restauranteAct->longitud,
+                    "reviewAverage"=>$restauranteAct->puntuation,
+                    "numReviews"=>$restauranteAct->numReviews-1
+                );
+                $restaurante->save($data);
+            }else{
+                return $this->respond("La review solicitada no ha sido encontrada",404,"La review solicitada no ha sido encontrada");
             }
 
         }catch(\Exception $e){
@@ -122,6 +172,7 @@ class ReviewRestController extends RESTfulResourceController
 
     }
 
+
     public function editCreateReview()
     {
         try{
@@ -129,7 +180,7 @@ class ReviewRestController extends RESTfulResourceController
             $body=$this->request->getJSON();
             $review = new ReviewsModel();
 
-            if($body->id){
+            if(isset($body->id)){
                 
                 $reviews = $review->findId($body->id);
                 if ($reviews) {
@@ -151,13 +202,13 @@ class ReviewRestController extends RESTfulResourceController
 
                     $data=array(
                         "id"=>$body->restaurant_id,
-                        'name'=>$restauranteAct['name'],
-                        'description'=>$restauranteAct['description'],
-                        'address'=>$restauranteAct['address'],
-                        'latitud'=>$restauranteAct['latitud'],
-                        'longitud'=>$restauranteAct['longitud'],
+                        'name'=>$restauranteAct->name,
+                        'description'=>$restauranteAct->description,
+                        'address'=>$restauranteAct->address,
+                        'latitud'=>$restauranteAct->latitud,
+                        'longitud'=>$restauranteAct->longitud,
                         "reviewAverage"=>$reviewAverage->puntuation,
-                        "numReviews"=>$restauranteAct['description']
+                        "numReviews"=>$restauranteAct->description
                     );
 
                     $restaurante->save($data);
@@ -190,11 +241,11 @@ class ReviewRestController extends RESTfulResourceController
 
                     $data=array(
                         "id"=>$data['restaurant_id'],
-                        'name'=>$restauranteAct['name'],
-                        'description'=>$restauranteAct['description'],
-                        'address'=>$restauranteAct['address'],
-                        'latitud'=>$restauranteAct['latitud'],
-                        'longitud'=>$restauranteAct['longitud'],
+                        'name'=>$restauranteAct->name,
+                        'description'=>$restauranteAct->description,
+                        'address'=>$restauranteAct->address,
+                        'latitud'=>$restauranteAct->latitud,
+                        'longitud'=>$restauranteAct->longitud,
                         "reviewAverage"=>$reviewAverage->puntuation,
                         "numReviews"=>$numReviews
                     );
@@ -209,6 +260,31 @@ class ReviewRestController extends RESTfulResourceController
             return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
         }
     }
+
+    public function newReview($restaurant_id="")
+    {
+        try{
+            $body=$this->request->getJSON();
+            $review = new ReviewsModel();
+    
+            if ($restaurant_id){
+                $data = array(
+                    "email" => $body->email,
+                    "description" => $body->description,
+                    "puntuation" => $body->puntuation,
+                    "restaurant_id"=>$restaurant_id
+                );
+                $newReview = new ReviewsEntity($data);
+                $review->save($newReview);
+                return $this->respond($data, 200, 'Review creada con exito');  
+            }else{
+                return $this->respond("",400,"Falta algun dato");
+            }
+        }catch(\Exception $e){
+            return $this->respond($e->getMessage(), 500, "KO, Error grave en el servidor");
+        }
+    }
+
 
     
 }

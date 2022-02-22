@@ -34,6 +34,15 @@ class RestaurantsModel extends Model
             ->first();
         }
     }
+    public function findName($id=null)
+    {
+        if(is_null($id)){
+            return $this->findAll();
+        }else{
+            $name = $this->where(['id' => $id])->first();
+            return $name;
+        }
+    }
 
     public function findRestaurantsDatatable($limitStart, $limitLenght) {
         return $this->limit($limitLenght, $limitStart)

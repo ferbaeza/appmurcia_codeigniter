@@ -32,6 +32,14 @@ class NewsModel extends Model
             ->first();
         }
     }
+
+    public function findone()
+    {      
+        return $this->first();  
+        //return $this->db->query("SELECT * FROM news ORDER BY id DESC LIMIT 1");
+        //return $this->getLastRow('array');
+    }
+    
     public function findGuid($guid=null){
         if(is_null($guid)){
             return $this->findAll();
