@@ -146,6 +146,21 @@ class ReviewRestController extends RESTfulResourceController
             if($review){
                 $rev->delete(['id'=>$id]);
                 return $this->respond($review, 200, "Review ".$id." eliminada correctamente");
+                $restaurante = new RestaurantsModel();
+                $restauranteAct=$restaurante->findId($review->restaurant_id);
+                    //$restaurante->actualizarRestaurant($data['restaurant_id'],$reviewAverage,$numReviews);
+
+                $data=array(
+                    "id"=>$restauranteAct->restaurant_id,
+                    'name'=>$restauranteAct->name,
+                    'description'=>$restauranteAct->description,
+                    'address'=>$restauranteAct->address,
+                    'latitud'=>$restauranteAct->latitud,
+                    'longitud'=>$restauranteAct->longitud,
+                    "reviewAverage"=>$restauranteAct->puntuation,
+                    "numReviews"=>$restauranteAct->numReviews-1
+                );
+                $restaurante->save($data);
             }else{
                 return $this->respond("La review solicitada no ha sido encontrada",200,"La review solicitada no ha sido encontrada");
             }
